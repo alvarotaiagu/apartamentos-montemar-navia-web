@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apartamentos Montemar · Navia, Asturias · Finca de olivos sobre la ría</title>
+<meta name="description" content="Cuatro apartamentos y un chalet de piedra en una finca de olivos centenarios sobre la desembocadura de la ría de Navia (Asturias). Reserva en su motor de reservas.">
+<meta property="og:title" content="Apartamentos Montemar · Navia, Asturias">
+<meta property="og:description" content="Cuatro apartamentos y un chalet de piedra en una finca de olivos sobre la ría de Navia.">
+<link rel="preload" as="image" type="image/webp" media="(max-width: 699px)" imagesrcset="img/portada/olivos-m560.webp 560w, img/portada/olivos-m800.webp 800w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(min-width: 700px) and (max-width: 1099px)" imagesrcset="img/portada/olivos-t900.webp 900w, img/portada/olivos-t1280.webp 1280w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" media="(min-width: 1100px)" imagesrcset="img/portada/olivos-800.webp 800w, img/portada/olivos-1200.webp 1200w, img/portada/olivos-1780.webp 1780w" imagesizes="100vw" fetchpriority="high">
+<!-- script bloqueante: clase «js», entrar siempre arriba (checklist punto 12), ?sin-webgl y el mando de maqueta. -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  window.Montemar = window.Montemar || {};
+  // al recargar, Chrome devuelve la página a media portada: se entra siempre arriba, salvo con un #ancla
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (!location.hash) window.scrollTo(0, 0);
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('sin-webgl')) h.classList.add('sin-webgl');
+    // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fustat:wght@300..700&family=Noto+Sans+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="css/base.css?v=7b67c9e5">
+<link rel="stylesheet" href="css/estilos.css?v=a0a337a8">
+<link rel="stylesheet" href="css/lugar.css?v=bf4efa94">
+<link rel="icon" href="marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#EDF2EC">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera fija: el símbolo (marca/simbolo.svg) y la palabra (marca/palabra.svg, trazada del logo);
+     transparente sobre el cielo de la portada y con fondo y blur en cuanto se baja (.sc) ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="marca" href="./" aria-label="Montemar, a la portada"><img class="marca__simbolo" src="marca/simbolo.svg" width="44" height="40" alt=""><img class="marca__palabra" src="marca/palabra.svg" width="112" height="22" alt=""></a>
+    <nav class="cab__nav" aria-label="Principal">
+      <a href="#quedarse">Dónde te quedas</a>
+      <a href="#dentro">Por dentro</a>
+      <a href="#vista">El tiempo</a>
+      <a href="#lugar">La ría</a>
+      <a href="#alrededor">Alrededor</a>
+    </nav>
+    <a class="cab__tel cifra" href="tel:+34649972451"><span class="vh">Teléfono: </span>649 972 451</a>
+    <a class="btn btn--acento cab__reservar" href="#reservar">Ver fechas</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+  <div class="menu-movil" id="menu-movil" aria-hidden="true">
+    <nav aria-label="Menú">
+      <a href="#quedarse"><small>Cuatro apartamentos y un chalet</small>Dónde te quedas</a>
+      <a href="#dentro"><small>Por estancias</small>Por dentro</a>
+      <a href="#vista"><small>El tiempo de ahora y su cámara</small>La vista</a>
+      <a href="#lugar"><small>La desembocadura, en 3D</small>La ría, ahora</a>
+      <a href="#alrededor"><small>La playa, Navia y la costa</small>Alrededor</a>
+      <a href="#reservar"><small>Su motor de reservas</small>Reservar</a>
+      <a href="#contacto"><small>Camino Montemar, Navia</small>Contacto</a>
+    </nav>
+    <p class="menu-movil__tel"><a class="cifra" href="tel:+34649972451">649 972 451</a><a href="mailto:monte-mar@outlook.com">monte-mar@outlook.com</a></p>
+  </div>
+</header>
+<!-- iconos propios (trazo 1,75, puntas redondas, como el contorno redondo de las copas del logo). Se usan con
+     <svg class="ico"><use href="#i-…"/></svg>; el color sale de currentColor. -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="i-cocina" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M3 13.5h18M8 16.5h2M7 9V6.5M12 9V5M17 9V6.5"/><circle cx="7" cy="5" r=".6" fill="currentColor"/><circle cx="17" cy="5" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-cama" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11.5" r="2"/></g></symbol>
+    <symbol id="i-ducha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V7a3 3 0 0 1 3-3h1a3 3 0 0 1 3 3v1"/><path d="M9 8h6"/><path d="M10 12v1M13 12v1M16 12v1M11.5 15.5v1M14.5 15.5v1M10 19v1M13 19v1M16 19v1"/></g></symbol>
+    <symbol id="i-chimenea" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8h14v13M3 8h18"/><path d="M12 19c-2 0-3-1.3-3-2.8 0-1.8 1.6-2.6 2-4.2 1.6 1 4 2.6 4 4.6 0 1.4-1.2 2.4-3 2.4Z"/></g></symbol>
+    <symbol id="i-patio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M3 20V9l4-4h10l4 4v11"/><path d="M8 20v-5h8v5"/><circle cx="12" cy="10" r="1.6"/></g></symbol>
+    <symbol id="i-olivo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="10" r="3.4"/><circle cx="12" cy="7.6" r="4.4"/><circle cx="17" cy="10.4" r="3.2"/><path d="M12 12v5M7 13.4V17M17 13.6V17M3 19.5c5-2.6 13-2.6 18 0"/></g></symbol>
+    <symbol id="i-toldo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-2 4H5L3 7Z"/><path d="M7.5 7l-1 4M12 7v4M16.5 7l1 4M5 11v9M19 11v9M3 20h18"/><path d="M9 16h6M10 16v4M14 16v4"/></g></symbol>
+    <symbol id="i-tobogan" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V6M9 21V6M5 10h4M5 14h4M5 18h4"/><path d="M9 7c4 0 5 3 7 7s3 5 5 5"/><path d="M3 21h18"/></g></symbol>
+    <symbol id="i-sabanas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16v4H4zM5 13h14v4H5zM4 17h16v3H4z"/><path d="M8 6.5c2-1.6 6-1.6 8 0"/></g></symbol>
+    <symbol id="i-limpieza" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l-3.2 8.5"/><path d="M7.6 10.6l6.2 2.4-1.6 4.5c-.5 1.4-2 2.1-3.4 1.6l-3.6-1.4"/><path d="M5.4 17.6 4 21M8 19l-.8 2.4"/><path d="M17.5 14v3M16 15.5h3M19.5 7v2M18.5 8h2"/></g></symbol>
+    <symbol id="i-toalla" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M7 6v13a1.5 1.5 0 0 0 1.5 1.5h7A1.5 1.5 0 0 0 17 19V6"/><path d="M7 15h10M7 17.5h10"/></g></symbol>
+    <symbol id="i-sin-mascotas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/><circle cx="9" cy="9" r="1.1"/><circle cx="12.5" cy="7.8" r="1.1"/><path d="M9.2 13.6c.8-1.4 2.6-1.6 3.6-.4l1.5 1.8c.8 1 .1 2.4-1.2 2.3l-1.6-.1-1.5.3c-1.2.2-2-1-1.4-2Z"/></g></symbol>
+    <symbol id="i-coche" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-3.5l2-4.5h12l2 4.5V16"/><path d="M3 16h18v2H3z"/><path d="M4 12.5h16"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></g></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="1.8"/><path d="M12 8l-3 4 3 2v7M12 8l3 3.5h3M9 12l-1.5 3.5M12 14l3.5 2.5L17 21"/></g></symbol>
+    <symbol id="i-flecha-izq" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flecha-der" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flecha-abajo" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-fuera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></g></symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+    <symbol id="i-telefono" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="i-correo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></g></symbol>
+    <symbol id="i-camara" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="13" height="10" rx="1.5"/><path d="m16 10.5 5-3v9l-5-3"/><circle cx="7" cy="10" r=".8" fill="currentColor"/></g></symbol>
+    <symbol id="i-sol" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></symbol>
+    <symbol id="i-luna" viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sol-nube" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v1.5M3.5 8.5H5M4.8 4.3l1 1M13.2 4.3l-1 1"/><path d="M6.3 11a3.2 3.2 0 0 1 5.9-2.4"/><path d="M8 19.5h9.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6.6A3.2 3.2 0 0 0 8 19.5Z"/></g></symbol>
+    <symbol id="i-nube" viewBox="0 0 24 24"><path d="M7 18.5h10.5a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6.9A3.6 3.6 0 0 0 7 18.5Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+    <symbol id="i-niebla" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13.5h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6.6A3.2 3.2 0 0 0 7 13.5Z"/><path d="M4 17h16M6 20.5h12"/></g></symbol>
+    <symbol id="i-lluvia" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6.6A3.2 3.2 0 0 0 7 14.5Z"/><path d="M8.5 17.5l-1 2.5M12.5 17.5l-1 2.5M16.5 17.5l-1 2.5"/></g></symbol>
+    <symbol id="i-nieve" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6.6A3.2 3.2 0 0 0 7 14.5Z"/><path d="M8 18.5h.01M12 20h.01M16 18.5h.01M10 21.5h.01M14 21.5h.01"/></g></symbol>
+    <symbol id="i-tormenta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6.6A3.2 3.2 0 0 0 7 14.5Z"/><path d="m12.5 16-2 3h3l-2 3"/></g></symbol>
+    <symbol id="i-viento" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M3 9h11a2.5 2.5 0 1 0-2.5-2.5"/><path d="M3 13h15a2.5 2.5 0 1 1-2.5 2.5"/><path d="M3 17h7"/></g></symbol>
+    <symbol id="i-ola" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c2.2 0 2.8-2 5-2s2.8 2 5 2 2.8-2 5-2 2.4 1.4 3 1.8"/><path d="M3 19c2.2 0 2.8-2 5-2s2.8 2 5 2 2.8-2 5-2 2.4 1.4 3 1.8"/><path d="M6 11c0-3.3 2.7-6 6-6 2.4 0 4.3 1.3 5 3.4-1.7-.8-4 .2-4 2.6"/></g></symbol>
+    <symbol id="i-termometro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.5V5a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0Z"/><path d="M12 9v7"/></g></symbol>
+    <symbol id="i-estrella" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8Z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<!-- el medidor de altura (main.js): baja con el scroll desde la cota de la finca (data/lugar.json, cotaFinca; sin él,
+     41 m) hasta 0 m. Es un adorno: la cifra real de la finca no se dice en ningún otro sitio hasta que Lugar la cierre -->
+<div class="medidor" id="medidor" aria-hidden="true" data-cota="54" hidden>
+  <span class="medidor__eti">Altitud</span>
+  <div class="medidor__regla"><i class="medidor__marca"></i></div>
+  <span class="medidor__cifra cifra"><b id="medidor-n">54</b> m</span>
+  <span class="medidor__mar">sobre el mar</span>
+</div>
+
+<main id="principal">
+
+<!-- ============ 1. PORTADA «Del monte al mar» (js/portada.js, Montemar.portada). Su panorámica en capas: atrás el cielo
+     (con los olivos borrados), en medio «Montemar», delante los olivos recortados y todo lo que queda por debajo del
+     horizonte (scripts/portada-capas.py). La loma marrón y la ola azul del logo cierran la portada por abajo. Sin JS y con
+     movimiento reducido se ve igual, quieta. ============ -->
+<section id="portada" class="portada" data-tramo="monte" aria-labelledby="t-portada">
+  <div class="portada__escena" data-modulo="portada">
+    <div class="portada__foto">
+      <picture class="portada__capa portada__cielo">
+        <source media="(max-width: 699px)" type="image/webp" srcset="img/portada/cielo-m560.webp 560w, img/portada/cielo-m800.webp 800w" sizes="100vw">
+        <source media="(max-width: 1099px)" type="image/webp" srcset="img/portada/cielo-t900.webp 900w, img/portada/cielo-t1280.webp 1280w" sizes="100vw">
+        <source type="image/webp" srcset="img/portada/cielo-800.webp 800w, img/portada/cielo-1200.webp 1200w, img/portada/cielo-1780.webp 1780w" sizes="100vw">
+        <img src="img/portada/cielo-1200.jpg" srcset="img/portada/cielo-800.jpg 800w, img/portada/cielo-1200.jpg 1200w, img/portada/cielo-1780.jpg 1780w" sizes="100vw" width="1780" height="800" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <h1 id="t-portada" class="portada__titulo"><span class="portada__palabra" aria-hidden="true">Montemar</span><span class="vh">Apartamentos Montemar, en Navia (Asturias)</span></h1>
+      <picture class="portada__capa portada__olivos">
+        <source media="(max-width: 699px)" type="image/webp" srcset="img/portada/olivos-m560.webp 560w, img/portada/olivos-m800.webp 800w" sizes="100vw">
+        <source media="(max-width: 1099px)" type="image/webp" srcset="img/portada/olivos-t900.webp 900w, img/portada/olivos-t1280.webp 1280w" sizes="100vw">
+        <source type="image/webp" srcset="img/portada/olivos-800.webp 800w, img/portada/olivos-1200.webp 1200w, img/portada/olivos-1780.webp 1780w" sizes="100vw">
+        <img src="img/portada/olivos-1200.png" srcset="img/portada/olivos-800.png 800w, img/portada/olivos-1200.png 1200w, img/portada/olivos-1780.png 1780w" sizes="100vw" width="1780" height="800" alt="La pradera de Montemar: olivos centenarios a contraluz y, detrás, la ría de Navia y el mar Cantábrico" fetchpriority="high" decoding="async">
+      </picture>
+            <svg class="portada__suelo" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="ps-filo" d="M0 70C300 24 960 8 1440 44V52C960 18 300 34 0 78Z"/>
+        <path class="ps-tierra" d="M0 77C300 33 960 17 1440 51V66C960 34 300 50 0 96Z"/>
+        <path class="ps-ola" d="M0 95C300 49 960 33 1440 65V80C1100 58 620 56 300 84C170 96 70 112 0 128Z"/>
+        <path class="ps-fondo" d="M0 127C70 111 170 95 300 83C620 55 1100 57 1440 79V150H0Z"/>
+      </svg>
+    </div>
+  </div>
+  <div class="portada__pie env">
+    <p class="portada__antes">Apartamentos y chalet en Navia, Asturias</p>
+    <p class="portada__sub">Cuatro apartamentos y un chalet de piedra en una finca de olivos, sobre la desembocadura de la ría de Navia.</p>
+    <p class="portada__acc"><a class="btn btn--acento" href="#reservar">Ver fechas</a><a class="btn btn--linea cifra" href="tel:+34649972451"><svg class="ico" aria-hidden="true"><use href="#i-telefono"/></svg><span class="vh">Llamar al </span>649 972 451</a></p>
+  </div>
+</section>
+
+<!-- ============ 2. Dónde te quedas: las dos fichas (cifras grandes, servicios con icono propio), la finca común y las
+     condiciones aparte. Datos: data/montemar.json → construir.mjs ============ -->
+<section id="quedarse" class="sec quedarse" data-tramo="monte" aria-labelledby="t-quedarse">
+  <div class="env">
+    <header class="sec-cab">
+      <h2 id="t-quedarse" class="sec-tit" data-aparece>Dónde te quedas</h2>
+      <p class="sec-txt">Cuatro apartamentos en la casa roja y un chalet de piedra, en la misma finca. Los precios y las noches libres, en su motor de reservas.</p>
+    </header>
+    <div class="unidades">
+    <article class="unidad unidad--apartamento" id="unidad-apartamento" aria-labelledby="t-unidad-apartamento">
+      <figure class="unidad__f"><button type="button" class="foto-btn" data-visor="casa-roja" data-grupo="unidades" aria-label="Ver más grande: La casa principal: dos plantas rojas con ventanas de marco blanco, porche de columnas blancas y escalera exterior"><picture data-foto="casa-roja"><source type="image/avif" srcset="img/fotos/casa-roja-480.avif 480w, img/fotos/casa-roja-800.avif 800w, img/fotos/casa-roja-1200.avif 1200w, img/fotos/casa-roja-1600.avif 1600w, img/fotos/casa-roja-1780.avif 1780w" sizes="(max-width: 899px) 92vw, 54vw"><source type="image/webp" srcset="img/fotos/casa-roja-480.webp 480w, img/fotos/casa-roja-800.webp 800w, img/fotos/casa-roja-1200.webp 1200w, img/fotos/casa-roja-1600.webp 1600w, img/fotos/casa-roja-1780.webp 1780w" sizes="(max-width: 899px) 92vw, 54vw"><img src="img/fotos/casa-roja-800.jpg" srcset="img/fotos/casa-roja-480.jpg 480w, img/fotos/casa-roja-800.jpg 800w, img/fotos/casa-roja-1200.jpg 1200w, img/fotos/casa-roja-1600.jpg 1600w, img/fotos/casa-roja-1780.jpg 1780w" sizes="(max-width: 899px) 92vw, 54vw" width="1780" height="800" alt="La casa principal: dos plantas rojas con ventanas de marco blanco, porche de columnas blancas y escalera exterior" loading="lazy" decoding="async"></picture></button></figure>
+      <div class="unidad__cuerpo">
+        <p class="unidad__tipo">Los apartamentos</p>
+        <h3 class="unidad__tit" id="t-unidad-apartamento">Cuatro apartamentos iguales en la casa roja</h3>
+        <p class="unidad__txt">Salón abierto a la cocina, dos habitaciones y un baño. Están en la casa principal, la del porche de columnas blancas.</p>
+        <dl class="unidad__cifras">
+          <div><dt>apartamentos iguales</dt><dd class="cifra">4</dd></div>
+          <div><dt>habitaciones en cada uno</dt><dd class="cifra">2</dd></div>
+          <div><dt>baño</dt><dd class="cifra">1</dd></div>
+          <div><dt>personas por apartamento</dt><dd class="cifra">4-6</dd></div>
+        </dl>
+        <p class="unidad__nota">Las plazas, según el Registro de Actividades Turísticas del Principado (AT0123).</p>
+        <ul class="unidad__serv">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cocina"/></svg><b>Salón con cocina</b><span>en el mismo espacio, con la mesa</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cama"/></svg><b>Dos habitaciones</b></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-ducha"/></svg><b>Baño completo</b><span>con ducha</span></li>
+        </ul>
+        <a class="btn btn--acento" href="#reservar" data-reservar="apartamento">Ver fechas<span class="vh">: los apartamentos</span></a>
+      </div>
+    </article>
+    <article class="unidad unidad--chalet" id="unidad-chalet" aria-labelledby="t-unidad-chalet">
+      <figure class="unidad__f"><button type="button" class="foto-btn" data-visor="chalet-salon" data-grupo="unidades" aria-label="Ver más grande: El salón del chalet: sofá, mesa de comedor de madera y la chimenea encastrada en la pared blanca"><picture data-foto="chalet-salon"><source type="image/avif" srcset="img/fotos/chalet-salon-480.avif 480w, img/fotos/chalet-salon-800.avif 800w, img/fotos/chalet-salon-1024.avif 1024w" sizes="(max-width: 899px) 92vw, 54vw"><source type="image/webp" srcset="img/fotos/chalet-salon-480.webp 480w, img/fotos/chalet-salon-800.webp 800w, img/fotos/chalet-salon-1024.webp 1024w" sizes="(max-width: 899px) 92vw, 54vw"><img src="img/fotos/chalet-salon-800.jpg" srcset="img/fotos/chalet-salon-480.jpg 480w, img/fotos/chalet-salon-800.jpg 800w, img/fotos/chalet-salon-1024.jpg 1024w" sizes="(max-width: 899px) 92vw, 54vw" width="1024" height="675" alt="El salón del chalet: sofá, mesa de comedor de madera y la chimenea encastrada en la pared blanca" loading="lazy" decoding="async"></picture></button></figure>
+      <div class="unidad__cuerpo">
+        <p class="unidad__tipo">El chalet</p>
+        <h3 class="unidad__tit" id="t-unidad-chalet">Un chalet de piedra, con chimenea y patio</h3>
+        <p class="unidad__txt">Salón amplio y comedor abiertos a la cocina, una habitación con su propio baño, dos habitaciones más y un segundo baño.</p>
+        <dl class="unidad__cifras">
+          <div><dt>chalet de piedra</dt><dd class="cifra">1</dd></div>
+          <div><dt>habitaciones</dt><dd class="cifra">3</dd></div>
+          <div><dt>baños</dt><dd class="cifra">2</dd></div>
+          <div class="es-pendiente"><dt>personas: por confirmar</dt><dd class="cifra">?</dd></div>
+        </dl>
+        <p class="unidad__nota">Cuántas personas caben en el chalet está por confirmar con la casa.</p>
+        <ul class="unidad__serv">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-chimenea"/></svg><b>Chimenea</b><span>en el salón</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cocina"/></svg><b>Salón, comedor y cocina</b><span>abiertos, en un solo espacio</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cama"/></svg><b>Una habitación con baño propio</b><span>y dos habitaciones más</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-patio"/></svg><b>Patio independiente</b><span>solo para el chalet</span></li>
+        </ul>
+        <a class="btn btn--acento" href="#reservar" data-reservar="chalet">Ver fechas<span class="vh">: el chalet</span></a>
+      </div>
+    </article>
+    </div>
+    <div class="vistazo" id="vistazo">
+      <h3 class="vistazo__tit">De un vistazo</h3>
+      <div class="vistazo__caja" role="group" aria-label="Tabla comparativa del apartamento y el chalet">
+        <table class="vistazo__tabla">
+          <caption class="vh">Apartamento y chalet comparados</caption>
+          <thead><tr><th scope="col"><span class="vh">Dato</span></th><th scope="col">Apartamento</th><th scope="col">Chalet</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Cuántos hay</th><td>4, iguales</td><td>1</td></tr>
+            <tr><th scope="row">Dónde</th><td>En la casa roja, la principal</td><td>Un edificio de piedra aparte</td></tr>
+            <tr><th scope="row">Habitaciones</th><td>2</td><td>3 (una con baño propio)</td></tr>
+            <tr><th scope="row">Baños</th><td>1</td><td>2</td></tr>
+            <tr><th scope="row">Personas</th><td>De 4 a 6</td><td>Por confirmar</td></tr>
+            <tr><th scope="row">Cocina</th><td>Abierta al salón</td><td>Abierta al salón y al comedor</td></tr>
+            <tr><th scope="row">Lo suyo</th><td>La terraza y la finca, comunes</td><td>Chimenea y patio independiente</td></tr>
+            <tr><th scope="row">Mascotas</th><td>No se admiten</td><td>No se admiten</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="comun">
+      <section class="comun__finca" aria-labelledby="t-finca">
+        <h3 class="comun__tit" id="t-finca">Para todos, la finca</h3>
+        <ul class="comun__lista">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-olivo"/></svg><b>Pradera de olivos centenarios</b><span>los tres árboles del logo</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-toldo"/></svg><b>Terraza con toldo</b><span>mirando a la ría y al mar</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-tobogan"/></svg><b>Zona de juegos</b><span>para los niños, en la finca</span></li>
+        </ul>
+      </section>
+      <section class="comun__cond" aria-labelledby="t-cond">
+        <h3 class="comun__tit" id="t-cond">Incluido y condiciones</h3>
+        <ul class="cond">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-sabanas"/></svg><span>Toda la ropa de cama, incluida.</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-limpieza"/></svg><span>Limpieza una vez a la semana.</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-toalla"/></svg><span>Cambio de toallas cada día, si lo pides.</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-sin-mascotas"/></svg><span>No se admiten mascotas.</span></li>
+        </ul>
+        <p class="cond__precio">Los precios, la disponibilidad y las condiciones de cada reserva los da su <a href="#reservar">motor de reservas</a>.</p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. Por dentro, por estancias: índice fijo que marca la que se ve, fotos sin marco con las alturas igualadas
+     por fila y el visor que abre por NOMBRE de archivo (checklist 11). Las fotos son de 1024 px: no se amplían ============ -->
+<section id="dentro" class="sec dentro" data-tramo="tierra" aria-labelledby="t-dentro">
+  <div class="env">
+    <header class="sec-cab">
+      <h2 id="t-dentro" class="sec-tit" data-aparece>Por dentro</h2>
+      <p class="sec-txt">Un apartamento, el chalet y lo de fuera. Pulsa una foto para verla grande.</p>
+    </header>
+    <div class="estancias">
+    <nav class="estancias__indice" aria-label="Estancias">
+      <ol>
+        <li><a href="#est-apartamento" data-est="apartamento" aria-current="true"><span class="estancias__largo">Un apartamento</span><span class="estancias__corto" aria-hidden="true">Apartamento</span><span class="estancias__n cifra" aria-hidden="true">4</span></a></li>
+        <li><a href="#est-chalet" data-est="chalet"><span class="estancias__largo">El chalet</span><span class="estancias__corto" aria-hidden="true">Chalet</span><span class="estancias__n cifra" aria-hidden="true">8</span></a></li>
+        <li><a href="#est-fuera" data-est="fuera"><span class="estancias__largo">Fuera</span><span class="estancias__corto" aria-hidden="true">Fuera</span><span class="estancias__n cifra" aria-hidden="true">4</span></a></li>
+      </ol>
+    </nav>
+      <div class="estancias__grupos">
+      <section class="estancia" id="est-apartamento" aria-labelledby="t-est-apartamento">
+        <h3 class="estancia__tit" id="t-est-apartamento">Un apartamento</h3>
+        <p class="estancia__txt">Los cuatro son iguales: el salón con la cocina, dos habitaciones y el baño.</p>
+        <div class="filas">
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="apto-salon" data-grupo="dentro" aria-label="Ver más grande: Salón del apartamento con la cocina de madera, la mesa con cuatro sillas, el sofá y la ventana"><picture data-foto="apto-salon"><source type="image/avif" srcset="img/fotos/apto-salon-480.avif 480w, img/fotos/apto-salon-800.avif 800w, img/fotos/apto-salon-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/apto-salon-480.webp 480w, img/fotos/apto-salon-800.webp 800w, img/fotos/apto-salon-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/apto-salon-800.jpg" srcset="img/fotos/apto-salon-480.jpg 480w, img/fotos/apto-salon-800.jpg 800w, img/fotos/apto-salon-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Salón del apartamento con la cocina de madera, la mesa con cuatro sillas, el sofá y la ventana" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="apto-matrimonio" data-grupo="dentro" aria-label="Ver más grande: Habitación de matrimonio con colcha mostaza y una ventana grande con vistas a los árboles"><picture data-foto="apto-matrimonio"><source type="image/avif" srcset="img/fotos/apto-matrimonio-480.avif 480w, img/fotos/apto-matrimonio-800.avif 800w, img/fotos/apto-matrimonio-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/apto-matrimonio-480.webp 480w, img/fotos/apto-matrimonio-800.webp 800w, img/fotos/apto-matrimonio-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/apto-matrimonio-800.jpg" srcset="img/fotos/apto-matrimonio-480.jpg 480w, img/fotos/apto-matrimonio-800.jpg 800w, img/fotos/apto-matrimonio-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Habitación de matrimonio con colcha mostaza y una ventana grande con vistas a los árboles" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="apto-dos-camas" data-grupo="dentro" aria-label="Ver más grande: Habitación de dos camas con colchas verdes, cabeceros de madera y una pared de pizarra"><picture data-foto="apto-dos-camas"><source type="image/avif" srcset="img/fotos/apto-dos-camas-480.avif 480w, img/fotos/apto-dos-camas-800.avif 800w, img/fotos/apto-dos-camas-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/apto-dos-camas-480.webp 480w, img/fotos/apto-dos-camas-800.webp 800w, img/fotos/apto-dos-camas-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/apto-dos-camas-800.jpg" srcset="img/fotos/apto-dos-camas-480.jpg 480w, img/fotos/apto-dos-camas-800.jpg 800w, img/fotos/apto-dos-camas-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Habitación de dos camas con colchas verdes, cabeceros de madera y una pared de pizarra" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:0.750;--max:500px"><button type="button" class="foto-btn" data-visor="apto-bano" data-grupo="dentro" aria-label="Ver más grande: Baño blanco con lavabo sobre encimera de madera, inodoro y mampara de ducha"><picture data-foto="apto-bano"><source type="image/avif" srcset="img/fotos/apto-bano-500.avif 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/apto-bano-500.webp 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/apto-bano-500.jpg" srcset="img/fotos/apto-bano-500.jpg 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="500" height="667" alt="Baño blanco con lavabo sobre encimera de madera, inodoro y mampara de ducha" loading="lazy" decoding="async"></picture></button></figure>
+        </div>
+      </section>
+      <section class="estancia" id="est-chalet" aria-labelledby="t-est-chalet">
+        <h3 class="estancia__tit" id="t-est-chalet">El chalet</h3>
+        <p class="estancia__txt">La casa de piedra: salón con chimenea, cocina abierta, tres habitaciones y dos baños.</p>
+        <div class="filas">
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-salon" data-grupo="dentro" aria-label="Ver más grande: Salón y comedor del chalet con la chimenea encastrada, la mesa de madera y la lámpara de mimbre"><picture data-foto="chalet-salon"><source type="image/avif" srcset="img/fotos/chalet-salon-480.avif 480w, img/fotos/chalet-salon-800.avif 800w, img/fotos/chalet-salon-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-salon-480.webp 480w, img/fotos/chalet-salon-800.webp 800w, img/fotos/chalet-salon-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-salon-800.jpg" srcset="img/fotos/chalet-salon-480.jpg 480w, img/fotos/chalet-salon-800.jpg 800w, img/fotos/chalet-salon-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Salón y comedor del chalet con la chimenea encastrada, la mesa de madera y la lámpara de mimbre" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-sofa" data-grupo="dentro" aria-label="Ver más grande: El sofá del chalet frente a dos ventanas de madera, con el comedor y el aparador al fondo"><picture data-foto="chalet-sofa"><source type="image/avif" srcset="img/fotos/chalet-sofa-480.avif 480w, img/fotos/chalet-sofa-800.avif 800w, img/fotos/chalet-sofa-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-sofa-480.webp 480w, img/fotos/chalet-sofa-800.webp 800w, img/fotos/chalet-sofa-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-sofa-800.jpg" srcset="img/fotos/chalet-sofa-480.jpg 480w, img/fotos/chalet-sofa-800.jpg 800w, img/fotos/chalet-sofa-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="El sofá del chalet frente a dos ventanas de madera, con el comedor y el aparador al fondo" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-cocina" data-grupo="dentro" aria-label="Ver más grande: Cocina blanca del chalet con frigorífico de acero, campana y una puerta acristalada al patio de piedra"><picture data-foto="chalet-cocina"><source type="image/avif" srcset="img/fotos/chalet-cocina-480.avif 480w, img/fotos/chalet-cocina-800.avif 800w, img/fotos/chalet-cocina-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-cocina-480.webp 480w, img/fotos/chalet-cocina-800.webp 800w, img/fotos/chalet-cocina-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-cocina-800.jpg" srcset="img/fotos/chalet-cocina-480.jpg 480w, img/fotos/chalet-cocina-800.jpg 800w, img/fotos/chalet-cocina-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Cocina blanca del chalet con frigorífico de acero, campana y una puerta acristalada al patio de piedra" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-limones" data-grupo="dentro" aria-label="Ver más grande: Habitación de matrimonio del chalet con cojines amarillos de limones y cabecero claro"><picture data-foto="chalet-limones"><source type="image/avif" srcset="img/fotos/chalet-limones-480.avif 480w, img/fotos/chalet-limones-800.avif 800w, img/fotos/chalet-limones-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-limones-480.webp 480w, img/fotos/chalet-limones-800.webp 800w, img/fotos/chalet-limones-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-limones-800.jpg" srcset="img/fotos/chalet-limones-480.jpg 480w, img/fotos/chalet-limones-800.jpg 800w, img/fotos/chalet-limones-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Habitación de matrimonio del chalet con cojines amarillos de limones y cabecero claro" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-verde" data-grupo="dentro" aria-label="Ver más grande: Habitación del chalet con cabecero de hierro blanco, colcha de flores y manta verde"><picture data-foto="chalet-verde"><source type="image/avif" srcset="img/fotos/chalet-verde-480.avif 480w, img/fotos/chalet-verde-800.avif 800w, img/fotos/chalet-verde-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-verde-480.webp 480w, img/fotos/chalet-verde-800.webp 800w, img/fotos/chalet-verde-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-verde-800.jpg" srcset="img/fotos/chalet-verde-480.jpg 480w, img/fotos/chalet-verde-800.jpg 800w, img/fotos/chalet-verde-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Habitación del chalet con cabecero de hierro blanco, colcha de flores y manta verde" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="chalet-dos-camas" data-grupo="dentro" aria-label="Ver más grande: Habitación del chalet con dos camas de cabecero de hierro blanco y una cortina de colores"><picture data-foto="chalet-dos-camas"><source type="image/avif" srcset="img/fotos/chalet-dos-camas-480.avif 480w, img/fotos/chalet-dos-camas-800.avif 800w, img/fotos/chalet-dos-camas-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-dos-camas-480.webp 480w, img/fotos/chalet-dos-camas-800.webp 800w, img/fotos/chalet-dos-camas-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-dos-camas-800.jpg" srcset="img/fotos/chalet-dos-camas-480.jpg 480w, img/fotos/chalet-dos-camas-800.jpg 800w, img/fotos/chalet-dos-camas-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="Habitación del chalet con dos camas de cabecero de hierro blanco y una cortina de colores" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:0.750;--max:500px"><button type="button" class="foto-btn" data-visor="chalet-lavabo" data-grupo="dentro" aria-label="Ver más grande: Lavabo del chalet: encimera blanca sobre madera y un espejo grande"><picture data-foto="chalet-lavabo"><source type="image/avif" srcset="img/fotos/chalet-lavabo-500.avif 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-lavabo-500.webp 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-lavabo-500.jpg" srcset="img/fotos/chalet-lavabo-500.jpg 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="500" height="667" alt="Lavabo del chalet: encimera blanca sobre madera y un espejo grande" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.333;--max:500px"><button type="button" class="foto-btn" data-visor="chalet-piedra" data-grupo="dentro" aria-label="Ver más grande: El chalet por fuera: muro de pizarra, ventana de madera y tejado a dos aguas"><picture data-foto="chalet-piedra"><source type="image/avif" srcset="img/fotos/chalet-piedra-500.avif 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/chalet-piedra-500.webp 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/chalet-piedra-500.jpg" srcset="img/fotos/chalet-piedra-500.jpg 500w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="500" height="375" alt="El chalet por fuera: muro de pizarra, ventana de madera y tejado a dos aguas" loading="lazy" decoding="async"></picture></button></figure>
+        </div>
+      </section>
+      <section class="estancia" id="est-fuera" aria-labelledby="t-est-fuera">
+        <h3 class="estancia__tit" id="t-est-fuera">Fuera</h3>
+        <p class="estancia__txt">La casa principal, la terraza y la pradera de olivos, con la ría y el mar delante.</p>
+        <div class="filas">
+          <figure class="foto" style="--r:2.225;--max:1780px"><button type="button" class="foto-btn" data-visor="casa-roja" data-grupo="dentro" aria-label="Ver más grande: La casa principal roja con el porche de columnas blancas a dos alturas y el zócalo de pizarra"><picture data-foto="casa-roja"><source type="image/avif" srcset="img/fotos/casa-roja-480.avif 480w, img/fotos/casa-roja-800.avif 800w, img/fotos/casa-roja-1200.avif 1200w, img/fotos/casa-roja-1600.avif 1600w, img/fotos/casa-roja-1780.avif 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/casa-roja-480.webp 480w, img/fotos/casa-roja-800.webp 800w, img/fotos/casa-roja-1200.webp 1200w, img/fotos/casa-roja-1600.webp 1600w, img/fotos/casa-roja-1780.webp 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/casa-roja-800.jpg" srcset="img/fotos/casa-roja-480.jpg 480w, img/fotos/casa-roja-800.jpg 800w, img/fotos/casa-roja-1200.jpg 1200w, img/fotos/casa-roja-1600.jpg 1600w, img/fotos/casa-roja-1780.jpg 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1780" height="800" alt="La casa principal roja con el porche de columnas blancas a dos alturas y el zócalo de pizarra" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:1.517;--max:1024px"><button type="button" class="foto-btn" data-visor="terraza" data-grupo="dentro" aria-label="Ver más grande: La terraza con el toldo de rayas, sofás de exterior y la vista a la ría y al mar al atardecer"><picture data-foto="terraza"><source type="image/avif" srcset="img/fotos/terraza-480.avif 480w, img/fotos/terraza-800.avif 800w, img/fotos/terraza-1024.avif 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/terraza-480.webp 480w, img/fotos/terraza-800.webp 800w, img/fotos/terraza-1024.webp 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/terraza-800.jpg" srcset="img/fotos/terraza-480.jpg 480w, img/fotos/terraza-800.jpg 800w, img/fotos/terraza-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1024" height="675" alt="La terraza con el toldo de rayas, sofás de exterior y la vista a la ría y al mar al atardecer" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:2.225;--max:1780px"><button type="button" class="foto-btn" data-visor="olivos" data-grupo="dentro" aria-label="Ver más grande: La pradera con los olivos centenarios a contraluz y, detrás, la ría de Navia y el mar"><picture data-foto="olivos"><source type="image/avif" srcset="img/fotos/olivos-480.avif 480w, img/fotos/olivos-800.avif 800w, img/fotos/olivos-1200.avif 1200w, img/fotos/olivos-1600.avif 1600w, img/fotos/olivos-1780.avif 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/olivos-480.webp 480w, img/fotos/olivos-800.webp 800w, img/fotos/olivos-1200.webp 1200w, img/fotos/olivos-1600.webp 1600w, img/fotos/olivos-1780.webp 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/olivos-800.jpg" srcset="img/fotos/olivos-480.jpg 480w, img/fotos/olivos-800.jpg 800w, img/fotos/olivos-1200.jpg 1200w, img/fotos/olivos-1600.jpg 1600w, img/fotos/olivos-1780.jpg 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1780" height="800" alt="La pradera con los olivos centenarios a contraluz y, detrás, la ría de Navia y el mar" loading="lazy" decoding="async"></picture></button></figure>
+          <figure class="foto" style="--r:2.685;--max:1780px"><button type="button" class="foto-btn" data-visor="amanecer" data-grupo="dentro" aria-label="Ver más grande: Amanecer dorado sobre la finca: los olivos en silueta y los montes en capas detrás"><picture data-foto="amanecer"><source type="image/avif" srcset="img/fotos/amanecer-480.avif 480w, img/fotos/amanecer-800.avif 800w, img/fotos/amanecer-1200.avif 1200w, img/fotos/amanecer-1600.avif 1600w, img/fotos/amanecer-1780.avif 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><source type="image/webp" srcset="img/fotos/amanecer-480.webp 480w, img/fotos/amanecer-800.webp 800w, img/fotos/amanecer-1200.webp 1200w, img/fotos/amanecer-1600.webp 1600w, img/fotos/amanecer-1780.webp 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw"><img src="img/fotos/amanecer-800.jpg" srcset="img/fotos/amanecer-480.jpg 480w, img/fotos/amanecer-800.jpg 800w, img/fotos/amanecer-1200.jpg 1200w, img/fotos/amanecer-1600.jpg 1600w, img/fotos/amanecer-1780.jpg 1780w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 30vw" width="1780" height="663" alt="Amanecer dorado sobre la finca: los olivos en silueta y los montes en capas detrás" loading="lazy" decoding="async"></picture></button></figure>
+        </div>
+      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. La vista y el tiempo de verdad (js/tiempo.js): Open-Meteo para Navia (cielo, temperatura, viento) y su
+     modelo marino para el oleaje. Si falla, se dice y no se inventa nada. Su webcam va por HTTP: se abre en otra pestaña ============ -->
+<section id="vista" class="sec vista" data-tramo="tierra" aria-labelledby="t-vista">
+  <div class="vista__in">
+    <figure class="vista__f">
+      <button type="button" class="foto-btn" data-visor="terraza" data-grupo="vista" aria-label="Ver más grande: la terraza con el toldo mirando a la ría"><picture data-foto="terraza"><source type="image/avif" srcset="img/fotos/terraza-480.avif 480w, img/fotos/terraza-800.avif 800w, img/fotos/terraza-1024.avif 1024w" sizes="(max-width: 899px) 100vw, 58vw"><source type="image/webp" srcset="img/fotos/terraza-480.webp 480w, img/fotos/terraza-800.webp 800w, img/fotos/terraza-1024.webp 1024w" sizes="(max-width: 899px) 100vw, 58vw"><img src="img/fotos/terraza-800.jpg" srcset="img/fotos/terraza-480.jpg 480w, img/fotos/terraza-800.jpg 800w, img/fotos/terraza-1024.jpg 1024w" sizes="(max-width: 899px) 100vw, 58vw" width="1024" height="675" alt="La terraza con el toldo de rayas y sofás de exterior; delante, el pinar, la ría y el mar al atardecer" loading="lazy" decoding="async"></picture></button>
+    </figure>
+    <div class="vista__txt">
+      <h2 id="t-vista" class="sec-tit" data-aparece>La vista, con el tiempo de ahora</h2>
+      <p class="sec-txt">Desde la terraza se ven la ría y el mar. Antes de venir, mira qué tiempo hace en Navia y cómo está el mar.</p>
+      <div class="tiempo" id="tiempo" aria-live="polite" data-estado="cargando">
+        <p class="tiempo__estado" id="tiempo-estado">Leyendo el tiempo de Navia…</p>
+        <dl class="tiempo__datos" id="tiempo-datos" hidden>
+          <div class="tiempo__dato tiempo__dato--cielo"><dt>Cielo</dt><dd><svg class="ico" aria-hidden="true"><use href="#i-sol" id="tiempo-ico"/></svg><span id="t-cielo"></span></dd></div>
+          <div class="tiempo__dato"><dt>Temperatura</dt><dd><b class="cifra" id="t-temp"></b><small id="t-sensa"></small></dd></div>
+          <div class="tiempo__dato"><dt>Viento</dt><dd><b class="cifra" id="t-viento"></b><small id="t-viento-dir"></small></dd></div>
+          <div class="tiempo__dato"><dt>Oleaje, mar adentro</dt><dd><b class="cifra" id="t-ola"></b><small id="t-ola-per"></small></dd></div>
+        </dl>
+        <p class="tiempo__fuente" id="tiempo-fuente">Datos de Open-Meteo para Navia y, el oleaje, de su modelo marino para el mar frente a la ría.</p>
+      </div>
+      <p class="vista__cam"><a class="btn btn--oscuro" href="http://185.154.211.67:8000/cgi-bin/mjpg/video.cgi?channel=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-camara"/></svg>Ver su cámara en directo<span class="vh"> (se abre en otra pestaña)</span></a></p>
+      <p class="vista__nota">Abre en otra pestaña la cámara del alojamiento, que mira a la ría las 24 horas. Va por una conexión sin cifrar (http).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. LA RÍA, AHORA (módulo del agente Lugar 3D: js/lugar.js, css/lugar.css). Sección OSCURA: las variables de
+     texto se redefinen dentro de #lugar (css/base.css). El HTML de [data-modulo="lugar"] es el respaldo que pone la Web:
+     el fotograma de su webcam y un texto. main.js monta Montemar.lugar al acercarse (900 px). ============ -->
+<section id="lugar" class="sec lugar" data-tramo="agua" aria-labelledby="t-lugar">
+  <div class="env lugar__cab">
+    <h2 id="t-lugar" class="sec-tit" data-aparece>La ría, ahora</h2>
+    <p class="sec-txt">La finca mira a la desembocadura de la ría de Navia: los dos espigones de la bocana, el pinar, la playa y el Cantábrico.</p>
+  </div>
+  <div data-modulo="lugar">
+    <figure class="lugar__respaldo">
+      <picture data-foto="webcam"><source type="image/avif" srcset="img/fotos/webcam-480.avif 480w, img/fotos/webcam-800.avif 800w, img/fotos/webcam-1200.avif 1200w, img/fotos/webcam-1600.avif 1600w, img/fotos/webcam-1920.avif 1920w" sizes="(max-width: 1279px) 100vw, 1240px"><source type="image/webp" srcset="img/fotos/webcam-480.webp 480w, img/fotos/webcam-800.webp 800w, img/fotos/webcam-1200.webp 1200w, img/fotos/webcam-1600.webp 1600w, img/fotos/webcam-1920.webp 1920w" sizes="(max-width: 1279px) 100vw, 1240px"><img src="img/fotos/webcam-800.jpg" srcset="img/fotos/webcam-480.jpg 480w, img/fotos/webcam-800.jpg 800w, img/fotos/webcam-1200.jpg 1200w, img/fotos/webcam-1600.jpg 1600w, img/fotos/webcam-1920.jpg 1920w" sizes="(max-width: 1279px) 100vw, 1240px" width="1920" height="1000" alt="La desembocadura de la ría de Navia desde la cámara de Montemar: los espigones, el arenal, el pinar y el mar con olas" loading="lazy" decoding="async"></picture>
+      <figcaption>La desembocadura desde su cámara, el 25 de noviembre de 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 6. Alrededor: distancias SOLO de OSRM (ref/raw/rutas.json → construir.mjs). Sin el fichero, sin cifras ============ -->
+<section id="alrededor" class="sec alrededor" data-tramo="agua" aria-labelledby="t-alrededor">
+  <div class="env">
+    <header class="sec-cab">
+      <h2 id="t-alrededor" class="sec-tit" data-aparece>Alrededor</h2>
+      <p class="sec-txt">La playa y Navia, andando. La costa hacia Galicia o hacia Luarca, y los Oscos tierra adentro, en coche.</p>
+    </header>
+    <ul class="cerca" aria-label="A pie desde la casa">
+      <li class="cerca__item" data-ruta="playa"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Playa de Navia</b><span class="cerca__min cifra">17<small> min</small></span><span class="cerca__km cifra">1,3 km andando</span></li>
+      <li class="cerca__item" data-ruta="navia"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Navia</b><span class="cerca__min cifra">21<small> min</small></span><span class="cerca__km cifra">1,6 km andando</span></li>
+    </ul>
+    <div class="rumbos">
+      <section class="rumbo rumbo--oeste" aria-labelledby="t-rumbo-oeste">
+        <h3 class="rumbo__tit" id="t-rumbo-oeste">Hacia Galicia<small>La costa al oeste</small></h3>
+        <ol class="rumbo__lista">
+          <li data-ruta="tapia"><b>Tapia de Casariego</b><span class="rumbo__min cifra">19 min</span><span class="rumbo__km cifra">21 km</span></li>
+          <li data-ruta="ribadeo"><b>Ribadeo</b><span class="rumbo__min cifra">24 min</span><span class="rumbo__km cifra">31 km</span></li>
+          <li data-ruta="catedrales"><b>Playa de las Catedrales</b><span class="rumbo__min cifra">30 min</span><span class="rumbo__km cifra">40 km</span></li>
+        </ol>
+      </section>
+      <section class="rumbo rumbo--interior" aria-labelledby="t-rumbo-interior">
+        <h3 class="rumbo__tit" id="t-rumbo-interior">Tierra adentro<small>El castro, Taramundi y los Oscos</small></h3>
+        <ol class="rumbo__lista">
+          <li data-ruta="coana"><b>Castro de Coaña</b><span class="rumbo__min cifra">8 min</span><span class="rumbo__km cifra">6,1 km</span></li>
+          <li data-ruta="taramundi"><b>Taramundi</b><span class="rumbo__min cifra">49 min</span><span class="rumbo__km cifra">54 km</span></li>
+          <li data-ruta="oscos"><b>Santa Eulalia de Oscos</b><span class="rumbo__min cifra">1 h 02 min</span><span class="rumbo__km cifra">67 km</span></li>
+        </ol>
+      </section>
+      <section class="rumbo rumbo--este" aria-labelledby="t-rumbo-este">
+        <h3 class="rumbo__tit" id="t-rumbo-este">Hacia Luarca<small>La costa al este y el aeropuerto</small></h3>
+        <ol class="rumbo__lista">
+          <li data-ruta="puertovega"><b>Puerto de Vega</b><span class="rumbo__min cifra">12 min</span><span class="rumbo__km cifra">7,1 km</span></li>
+          <li data-ruta="luarca"><b>Luarca</b><span class="rumbo__min cifra">18 min</span><span class="rumbo__km cifra">21 km</span></li>
+          <li data-ruta="ovd"><b>Aeropuerto de Asturias</b><span class="rumbo__min cifra">50 min</span><span class="rumbo__km cifra">68 km</span></li>
+        </ol>
+      </section>
+    </div>
+    <p class="alrededor__fino">En coche, por carretera, y a pie, por calles y caminos, desde la casa. Calculado con OSRM sobre datos de © colaboradores de OpenStreetMap el 25 de noviembre de 2026: tiempos sin tráfico ni paradas, orientativos. A la playa, hasta el punto de la arena más cercano.</p>
+  </div>
+</section>
+
+<!-- ============ 7. Reseñas (Google: 4,8 con 78 reseñas; hay recuento suficiente para decirlo). Sin citas inventadas ============ -->
+<section id="resenas" class="sec resenas" data-tramo="agua" aria-labelledby="t-resenas">
+  <div class="env">
+    <div class="resenas__in">
+      <p class="resenas__nota" aria-hidden="true"><span class="cifra">4,8</span><span class="resenas__copas"><span class="copa" style="--p:100%"></span><span class="copa" style="--p:100%"></span><span class="copa" style="--p:100%"></span><span class="copa" style="--p:100%"></span><span class="copa" style="--p:80%"></span></span></p>
+      <div class="resenas__txt">
+        <h2 id="t-resenas" class="sec-tit" data-aparece>La nota de quienes han estado</h2>
+        <p class="resenas__dato">4,8 sobre 5 con <span class="cifra">78</span> reseñas en su ficha de Google. En su motor de reservas (WuBook), <span class="cifra">9,7</span> sobre 10 con <span class="cifra">92</span> opiniones.</p>
+        <p><a class="btn btn--oscuro" href="https://www.google.com/maps/search/?api=1&amp;query=Apartamentos%20Montemar%2C%20Camino%20Montemar%2C%2033710%20Navia" target="_blank" rel="noopener">Leer las reseñas en Google<span class="vh"> (se abre en otra pestaña)</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. Reservar: buscador propio (js/reserva.js) que CREA el iframe de su WuBook real solo al pedirlo (pone
+     cookies). WuBook acepta las fechas por URL: dfrom y dto en DD/MM/AAAA y lang=es ============ -->
+<section id="reservar" class="sec reservar" data-tramo="agua" aria-labelledby="t-reservar">
+  <div class="env">
+    <header class="sec-cab">
+      <h2 id="t-reservar" class="sec-tit" data-aparece>Ver fechas y reservar</h2>
+      <p class="sec-txt">Elige el día de llegada y el de salida. Se abre su motor de reservas con esas fechas, con las noches libres y el precio.</p>
+    </header>
+<!-- el buscador (js/reserva.js): calendario propio de llegada y salida, con validación. Al pulsar «Buscar en su motor» se
+     CREA el iframe de su WuBook con ?lcode=1601452661&dfrom=DD/MM/AAAA&dto=DD/MM/AAAA&lang=es (antes no existe: pone
+     cookies). WuBook no acepta por URL las personas ni la unidad: eso se elige dentro de su motor. -->
+<p class="real" role="note"><svg class="ico" aria-hidden="true"><use href="#i-olivo"/></svg><span><b>Es su motor de reservas real.</b> Lo que se abre aquí es el motor de Apartamentos Montemar (WuBook): las reservas que hagas dentro son de verdad. Esta web es una propuesta y no guarda nada.</span></p>
+
+<form class="busca" id="busca" novalidate>
+  <div class="busca__cal">
+    <div class="busca__fechas" aria-live="polite">
+      <p><span class="busca__eti">Llegada</span><b data-fecha="entrada">Elige día</b></p>
+      <p><span class="busca__eti">Salida</span><b data-fecha="salida">Elige día</b></p>
+      <p class="busca__noches cifra" data-noches></p>
+    </div>
+    <div class="cal" id="cal" role="group" aria-label="Calendario de llegada y salida">
+      <noscript><p>El calendario necesita JavaScript. Abre su <a href="https://wubook.net/wbkd/wbk/?lcode=1601452661&amp;lang=es" target="_blank" rel="noopener">motor de reservas</a> o llama al <a href="tel:+34649972451">649 972 451</a>.</p></noscript>
+    </div>
+  </div>
+
+  <div class="busca__lado">
+    <p class="busca__resumen" data-resumen>Elige el día de llegada.</p>
+    <p class="busca__error" id="busca-error" role="alert" hidden></p>
+    <p class="busca__pista">En su motor eliges después cuántos sois y si quieres un apartamento o el chalet.</p>
+    <button class="btn btn--acento busca__ir" type="submit" id="busca-ir">Buscar en su motor</button>
+    <p class="busca__otros"><button type="button" class="enlace" id="motor-sin-fechas">Abrir su motor sin fechas</button></p>
+  </div>
+</form>
+
+<div class="motor" id="motor" aria-live="polite">
+  <div class="motor__vacio" id="motor-vacio">
+    <img class="motor__logo" src="marca/simbolo.svg" width="436" height="368" alt="" loading="lazy" decoding="async">
+    <p>Aquí se abrirá su motor de reservas con tus fechas: las noches libres, el precio y la reserva.</p>
+  </div>
+  <p class="motor__estado" id="motor-estado"></p>
+  <p class="motor__fuera" id="motor-fuera-p" hidden><a id="motor-fuera" href="https://wubook.net/wbkd/wbk/?lcode=1601452661&amp;lang=es" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-fuera"/></svg>Abrir su motor en otra pestaña<span class="vh"> (se abre en otra pestaña)</span></a></p>
+</div>
+
+<p class="reservar__alt">¿Prefieres llamar o escribir? <a class="cifra" href="tel:+34649972451">649 972 451</a> o <a href="mailto:monte-mar@outlook.com">monte-mar@outlook.com</a></p>
+  </div>
+</section>
+
+<!-- ============ 9. Contacto y mapa (Google Maps sin clave, solo tras pulsar) ============ -->
+<section id="contacto" class="sec contacto" data-tramo="agua" aria-labelledby="t-contacto">
+  <div class="env contacto__in">
+    <div class="contacto__txt">
+      <h2 id="t-contacto" class="sec-tit" data-aparece>Cómo llegar</h2>
+      <address class="contacto__dir">Camino Montemar, s/n<br>33710 Navia (Asturias)</address>
+      <p class="contacto__lineas"><a class="cifra" href="tel:+34649972451"><svg class="ico" aria-hidden="true"><use href="#i-telefono"/></svg>649 972 451</a><a href="mailto:monte-mar@outlook.com"><svg class="ico" aria-hidden="true"><use href="#i-correo"/></svg>monte-mar@outlook.com</a></p>
+      <p class="contacto__ruta">En Navia, sobre la desembocadura de la ría. El aeropuerto de Asturias queda a <span class="cifra">50 min</span> en coche y Luarca a <span class="cifra">18 min</span>.</p>
+    </div>
+    <div class="mapa" id="mapa" data-q="Apartamentos Montemar, Camino Montemar, 33710 Navia, Asturias">
+      <button type="button" class="map-consent" id="mapa-btn">
+        <img class="map-consent__logo" src="marca/simbolo.svg" width="436" height="368" alt="" loading="lazy" decoding="async">
+        <b>Ver el mapa</b>
+        <span>Al pulsar se carga Google Maps, que puede instalar sus cookies.</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ pie (agua): el logo entero. Lo que la portada abrió (su paisaje), el pie lo cierra: al llegar, los
+     tres troncos suben desde la loma y las copas crecen, primero las de los lados y luego la grande. Con movimiento
+     reducido, el logo ya está completo. Debajo, el cartel obligatorio de la ayuda NextGenerationEU. ============ -->
+<footer class="pie" id="pie">
+  <div class="env">
+    <div class="pie__arriba">
+      <a class="pie__logo" href="./" aria-label="Montemar, a la portada">
+        <svg class="pie__simbolo" viewBox="7 10 436 368" aria-hidden="true" focusable="false"><g class="lp-arboles"><rect class="lp-tronco lp-t1" x="111.5" y="225.37" width="15" height="54.63" fill="#0B080C"/><rect class="lp-tronco lp-t2" x="205.5" y="214.8" width="23" height="59.2" fill="#0B080C"/><rect class="lp-tronco lp-t3" x="316.5" y="226.7" width="16" height="53.3" fill="#0B080C"/><g class="lp-copa lp-c1" style="transform-origin:119.66px 238.8px"><circle cx="119.66" cy="159.54" r="72.55" fill="#46713C" stroke="#0B080C" stroke-width="13.43"/></g><g class="lp-copa lp-c2" style="transform-origin:323.68px 240.13px"><circle cx="323.68" cy="168.88" r="64.54" fill="#173E29" stroke="#0B080C" stroke-width="13.43"/></g><g class="lp-copa lp-c3" style="transform-origin:217.37px 228.23px"><circle cx="217.37" cy="120.26" r="101.26" fill="#215A37" stroke="#0B080C" stroke-width="13.43"/></g></g><image href="marca/suelo.svg" x="7" y="10" width="436" height="368"/></svg>
+        <img class="pie__palabra" src="marca/palabra.svg" width="387" height="61" alt="" loading="lazy" decoding="async">
+      </a>
+      <div class="pie__cols">
+        <div>
+          <h2 class="pie__h">Dónde</h2>
+          <p>Camino Montemar, s/n<br>33710 Navia (Asturias)</p>
+          <p><a href="#contacto">Cómo llegar</a></p>
+        </div>
+        <div>
+          <h2 class="pie__h">Reservas</h2>
+          <p><a class="cifra" href="tel:+34649972451">649 972 451</a><br><a href="mailto:monte-mar@outlook.com">monte-mar@outlook.com</a></p>
+          <p><a href="#reservar">Su motor de reservas</a></p>
+        </div>
+        <div>
+          <h2 class="pie__h">La finca</h2>
+          <p><a href="#quedarse">Dónde te quedas</a><br><a href="#dentro">Por dentro</a><br><a href="#vista">El tiempo</a><br><a href="#alrededor">Alrededor</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- publicidad obligatoria de la ayuda (ref/origen/web/difusion.jpg, de su web). Se enseña a su tamaño (640 px, sin
+         ampliar) y, para que se lea en el móvil, con el texto escrito al lado y un enlace al cartel entero -->
+    <figure class="ayuda">
+      <a class="ayuda__img" href="img/difusion.jpg" target="_blank" rel="noopener"><img src="img/difusion.jpg" width="640" height="520" loading="lazy" decoding="async" alt="Cartel de la ayuda: Principado de Asturias, Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo. Actuaciones de eficiencia energética. MONTEMAR S.L. Sustitución de equipos y aparatos electrodomésticos por otros de alta eficiencia con etiquetado energético. Financiado por la Unión Europea, NextGenerationEU; Plan de Recuperación, Transformación y Resiliencia; España Puede"><span class="vh"> (abre el cartel a tamaño completo en otra pestaña)</span></a>
+      <figcaption class="ayuda__txt">
+        <p><b>Actuaciones de eficiencia energética</b> financiadas con las ayudas a proyectos de eficiencia energética y economía circular de empresas turísticas del Principado de Asturias, en el marco del Plan de Recuperación, Transformación y Resiliencia.</p>
+        <p>MONTEMAR S.L. Actuación: sustitución de equipos y aparatos electrodomésticos por otros de alta eficiencia con etiquetado energético.</p>
+        <p>Resolución de 19 de julio de 2024, de la Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo. Financiado por la Unión Europea, NextGenerationEU.</p>
+      </figcaption>
+    </figure>
+
+    <div class="pie__legal">
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> MONTEMAR - NAVIA S.L. · Registro turístico AT0123</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Sin cookies de análisis ni de publicidad: solo se guarda que has visto este aviso. Las letras vienen de Google Fonts y el tiempo, de Open-Meteo; el mapa de Google y el motor de reservas (WuBook, con sus cookies) solo se cargan si los pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--acento" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--linea" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="monte" aria-pressed="true">Del monte al mar</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->
+
+<!-- visor de fotos (se abre por el NOMBRE de la foto) -->
+<dialog class="visor" id="visor" aria-label="Foto ampliada">
+  <figure class="visor__fig">
+    <img id="visor-img" alt="" width="1024" height="675">
+    <figcaption><span id="visor-pie"></span> <span class="visor__n cifra" id="visor-n"></span></figcaption>
+  </figure>
+  <button type="button" class="visor__btn visor__btn--ant" id="visor-ant" aria-label="Foto anterior"><svg class="ico" aria-hidden="true"><use href="#i-flecha-izq"/></svg></button>
+  <button type="button" class="visor__btn visor__btn--sig" id="visor-sig" aria-label="Foto siguiente"><svg class="ico" aria-hidden="true"><use href="#i-flecha-der"/></svg></button>
+  <button type="button" class="visor__cerrar" id="visor-cerrar" aria-label="Cerrar"><svg class="ico" aria-hidden="true"><use href="#i-cerrar"/></svg></button>
+</dialog>
+
+<!-- el foco del teclado: contorno redondeado y, en la esquina, tres copas como las del logo (lo coloca main.js) -->
+<svg class="foco-copas" id="foco-copas" aria-hidden="true" focusable="false"><path class="foco-copas__marco"/><g class="foco-copas__arboles"><circle r="4.6"/><circle r="6"/><circle r="4.2"/></g></svg>
+
+<!-- los módulos: la portada (Web) y el 3D (Lugar 3D). Si falta el de Lugar, la página no falla: se queda el respaldo -->
+<script src="js/portada.js?v=420c4a0b" defer></script>
+<script src="js/lugar.js?v=85aafa77" defer></script>
+<!-- la web -->
+<script src="js/tiempo.js?v=01ae6b50" defer></script>
+<script src="js/reserva.js?v=74fe96de" defer></script>
+<script src="js/main.js?v=5357e953" defer></script>
+</body>
+</html>

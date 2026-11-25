@@ -1,0 +1,126 @@
+/* =====================================================================
+   Montemar · «Del monte al mar» · base: tokens, letras, reinicio y piezas comunes.
+   VARIABLES COMUNES DEL CONTRATO (las define la Web; Lugar 3D solo las LEE):
+     --fondo, --superficie, --texto, --texto-suave, --marca, --acento, --tierra, --agua, --linea,
+     --letra-titular, --letra-texto, --letra-cifras.
+   #lugar es una sección OSCURA: dentro de #lugar se redefinen --fondo, --superficie, --texto, --texto-suave y --linea
+   para fondo oscuro (abajo). Lugar 3D lee esas.
+   Paleta (de los colores del logo, medidos en el PNG; contraste en scripts/paleta.mjs):
+     hoja    #215A37  verde de la copa grande: acento (botones de reservar, marcas activas)
+     oscuro  #173E29  verde oscuro de la copa derecha: --marca
+     loma    #814429  marrón de la loma: --tierra
+     ola     #498BC8  azul de la ola: --agua (solo superficies, filetes y texto grande; como texto pequeño, --agua-texto)
+     tinta   #132219  texto
+     fondos  monte #EDF2EC · tierra #F3ECE7 · agua #EAF1F6: el fondo baja como el logo (verde → tierra → agua)
+     noche   #0E1C14  #lugar
+   ===================================================================== */
+:root {
+  --hoja: #215A37;
+  --oscuro: #173E29;
+  --loma: #814429;
+  --ola: #498BC8;
+  --tinta: #132219;
+  --monte: #EDF2EC;
+  --tierra-claro: #F3ECE7;
+  --agua-claro: #EAF1F6;
+  --noche: #0E1C14;
+
+  /* contrato */
+  --fondo: var(--monte);
+  --superficie: #FFFFFF;
+  --texto: var(--tinta);
+  --texto-suave: #47574C;
+  --marca: var(--oscuro);
+  --acento: var(--hoja);
+  --tierra: var(--loma);
+  --agua: var(--ola);
+  --linea: color-mix(in oklab, var(--tinta) 16%, var(--monte));
+  --letra-titular: 'Afacad', 'Segoe UI', system-ui, sans-serif;
+  --letra-texto: 'Fustat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --letra-cifras: 'Noto Sans Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* derivados (texto que tiene que llegar a AA; medidos en scripts/paleta.mjs) */
+  --agua-texto: #2A659D;
+  --tierra-texto: #7A3F25;
+  --claro: #EEF3EE;
+  --claro-suave: #B5C4B9;
+  --foco: var(--hoja);
+
+  --cabecera: 72px;
+  --gutter: clamp(20px, 5vw, 72px);
+  --ancho: 1240px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --radio: 14px;        /* todo redondo, como las copas: 14 px en cajas y fotos, píldora en botones */
+  --radio-btn: 999px;
+  color-scheme: light;
+}
+
+/* #lugar: la sección oscura. Las variables de TEXTO se redefinen aquí para fondo oscuro (contrato con Lugar 3D) */
+#lugar {
+  --fondo: var(--noche);
+  --superficie: #16291E;
+  --texto: var(--claro);
+  --texto-suave: var(--claro-suave);
+  --linea: color-mix(in oklab, var(--claro) 20%, var(--noche));
+  --agua-texto: #8FBDE6;
+  --foco: var(--claro);
+  color-scheme: dark;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; scroll-padding-top: calc(var(--cabecera) + 12px); background: var(--fondo-pagina, var(--monte)); transition: background-color 1.1s var(--ease); }
+body { margin: 0; background: transparent; color: var(--texto); font: 400 1.0625rem/1.65 var(--letra-texto); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+button { font: inherit; color: inherit; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--letra-titular); font-weight: 600; line-height: 1.02; letter-spacing: -.01em; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+address { font-style: normal; }
+[hidden] { display: none !important; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.cifra { font-family: var(--letra-cifras); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ico { width: 24px; height: 24px; flex: none; }
+
+/* foco del teclado: contorno redondeado de 2 px y, en la esquina de arriba a la derecha, las tres copas del logo
+   (#foco-copas, lo coloca main.js). Sin JS queda el contorno. */
+:focus-visible { outline: 2px solid var(--foco); outline-offset: 4px; border-radius: 6px; }
+:focus:not(:focus-visible) { outline: none; }
+.foco-copas { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; z-index: 120; overflow: visible; opacity: 0; color: var(--foco); }
+.foco-copas.es-fijo { position: fixed; }
+.foco-copas.es-visible { opacity: 1; }
+.foco-copas__marco { fill: none; stroke: currentColor; stroke-width: 2; }
+.foco-copas__arboles circle { fill: var(--foco-fondo, #fff); stroke: currentColor; stroke-width: 2; }
+
+.saltar { position: fixed; left: 12px; top: -80px; z-index: 200; background: var(--oscuro); color: var(--claro); padding: .7rem 1rem; border-radius: 10px; text-decoration: none; }
+.saltar:focus { top: 12px; }
+
+.env { width: min(100% - 2 * var(--gutter), var(--ancho)); margin-inline: auto; }
+
+/* ---------- botones (píldora, como el contorno redondo de las copas; una etiqueta por intención: «Ver fechas») ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 50px; padding: .75rem 1.5rem; border: 2px solid transparent; border-radius: var(--radio-btn);
+  font: 600 1.06rem/1.1 var(--letra-titular); letter-spacing: .01em; text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .15s var(--ease); }
+.btn .ico { width: 20px; height: 20px; }
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn--acento { background: var(--hoja); color: var(--claro); }
+.btn--acento:hover { background: var(--oscuro); }
+.btn--oscuro { background: var(--oscuro); color: var(--claro); }
+.btn--oscuro:hover { background: var(--tinta); }
+.btn--linea { border-color: var(--oscuro); color: var(--oscuro); background: transparent; }
+.btn--linea:hover { background: var(--oscuro); color: var(--claro); }
+.enlace { background: none; border: 0; padding: .4rem 0; text-decoration: underline; text-underline-offset: .22em; cursor: pointer; color: inherit; }
+
+/* ---------- titulares que aparecen (solo con movimiento: «con-movimiento» lo pone main.js) ---------- */
+.con-movimiento [data-aparece] { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.con-movimiento [data-aparece].es-visto { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

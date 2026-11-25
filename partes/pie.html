@@ -1,0 +1,61 @@
+<!-- ============ pie (agua): el logo entero. Lo que la portada abrió (su paisaje), el pie lo cierra: al llegar, los
+     tres troncos suben desde la loma y las copas crecen, primero las de los lados y luego la grande. Con movimiento
+     reducido, el logo ya está completo. Debajo, el cartel obligatorio de la ayuda NextGenerationEU. ============ -->
+<footer class="pie" id="pie">
+  <div class="env">
+    <div class="pie__arriba">
+      <a class="pie__logo" href="./" aria-label="Montemar, a la portada">
+<!--logo-pie-->
+        <img class="pie__palabra" src="marca/palabra.svg" width="387" height="61" alt="" loading="lazy" decoding="async">
+      </a>
+      <div class="pie__cols">
+        <div>
+          <h2 class="pie__h">Dónde</h2>
+          <p>Camino Montemar, s/n<br>33710 Navia (Asturias)</p>
+          <p><a href="#contacto">Cómo llegar</a></p>
+        </div>
+        <div>
+          <h2 class="pie__h">Reservas</h2>
+          <p><a class="cifra" href="tel:+34649972451">649 972 451</a><br><a href="mailto:monte-mar@outlook.com">monte-mar@outlook.com</a></p>
+          <p><a href="#reservar">Su motor de reservas</a></p>
+        </div>
+        <div>
+          <h2 class="pie__h">La finca</h2>
+          <p><a href="#quedarse">Dónde te quedas</a><br><a href="#dentro">Por dentro</a><br><a href="#vista">El tiempo</a><br><a href="#alrededor">Alrededor</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- publicidad obligatoria de la ayuda (ref/origen/web/difusion.jpg, de su web). Se enseña a su tamaño (640 px, sin
+         ampliar) y, para que se lea en el móvil, con el texto escrito al lado y un enlace al cartel entero -->
+    <figure class="ayuda">
+      <a class="ayuda__img" href="img/difusion.jpg" target="_blank" rel="noopener"><img src="img/difusion.jpg" width="640" height="520" loading="lazy" decoding="async" alt="Cartel de la ayuda: Principado de Asturias, Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo. Actuaciones de eficiencia energética. MONTEMAR S.L. Sustitución de equipos y aparatos electrodomésticos por otros de alta eficiencia con etiquetado energético. Financiado por la Unión Europea, NextGenerationEU; Plan de Recuperación, Transformación y Resiliencia; España Puede"><span class="vh"> (abre el cartel a tamaño completo en otra pestaña)</span></a>
+      <figcaption class="ayuda__txt">
+        <p><b>Actuaciones de eficiencia energética</b> financiadas con las ayudas a proyectos de eficiencia energética y economía circular de empresas turísticas del Principado de Asturias, en el marco del Plan de Recuperación, Transformación y Resiliencia.</p>
+        <p>MONTEMAR S.L. Actuación: sustitución de equipos y aparatos electrodomésticos por otros de alta eficiencia con etiquetado energético.</p>
+        <p>Resolución de 19 de julio de 2024, de la Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo. Financiado por la Unión Europea, NextGenerationEU.</p>
+      </figcaption>
+    </figure>
+
+    <div class="pie__legal">
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> MONTEMAR - NAVIA S.L. · Registro turístico AT0123</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Sin cookies de análisis ni de publicidad: solo se guarda que has visto este aviso. Las letras vienen de Google Fonts y el tiempo, de Open-Meteo; el mapa de Google y el motor de reservas (WuBook, con sus cookies) solo se cargan si los pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--acento" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--linea" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="monte" aria-pressed="true">Del monte al mar</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->

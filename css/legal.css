@@ -1,0 +1,29 @@
+/* Montemar · páginas legales y 404 (sobre css/base.css) */
+body { background: var(--monte); }
+.legal-cab { border-bottom: 1px solid var(--linea); }
+.legal-cab .env { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 72px; }
+.legal-marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+.legal-marca img:first-child { width: 46px; }
+.legal-marca img:last-child { width: 118px; }
+.volver { font-weight: 600; }
+.legal { padding: clamp(2.5rem, 6vw, 4.5rem) 0 4rem; }
+.legal .env { max-width: 46rem; }
+.legal h1 { font-size: clamp(2.4rem, 1.8rem + 2.6vw, 3.6rem); margin-bottom: 1.6rem; }
+.legal h2 { font-size: 1.5rem; margin: 2.2rem 0 .7rem; }
+.legal p, .legal li { margin-bottom: .8rem; }
+.legal ul { list-style: disc; padding-left: 1.3rem; }
+.legal dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .45rem 1.4rem; margin: 1.2rem 0; padding: 1.2rem 1.4rem; border-radius: var(--radio); background: #fff; }
+.legal dt { font-weight: 600; }
+.legal dd { margin: 0; }
+.aviso { padding: .8rem 1rem; border-left: 4px solid var(--loma); background: color-mix(in oklab, var(--loma) 10%, #fff); border-radius: 0 10px 10px 0; color: var(--tierra-texto); font-weight: 500; }
+.aviso-corto { color: var(--tierra-texto); font-weight: 600; }
+.legal-pie { border-top: 1px solid var(--linea); padding: 1.4rem 0 2.4rem; }
+.legal-pie .env { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; }
+@media (max-width: 560px) { .legal dl { grid-template-columns: 1fr; } .legal dt { margin-top: .5rem; } }
+/* 404 */
+.no-hay { min-height: 100svh; display: grid; place-items: center; background: var(--agua-claro); }
+.no { display: grid; justify-items: center; gap: 1.1rem; max-width: 34rem; padding: 2rem var(--gutter); text-align: center; }
+.no__logo img { width: 200px; }
+.no h1 { font-size: clamp(2.2rem, 1.6rem + 2.6vw, 3.4rem); }
+.no p { color: var(--texto-suave); }
+.no__acc { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; margin-top: .6rem; }

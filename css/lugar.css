@@ -1,0 +1,242 @@
+/* ------------------------------------------------------------------
+   Montemar · lugar.css · «La ría, ahora» (módulo lugar)
+   Lee las variables comunes de Web (--fondo, --superficie, --texto,
+   --texto-suave, --marca, --acento, --agua, --linea, --letra-*); dentro
+   de #lugar ya vienen redefinidas para fondo oscuro. No define colores
+   de página: solo los de dentro de la escena (la noche del plano, la
+   luz de las ventanas).
+   El escenario es sticky: ningún antepasado puede llevar overflow
+   hidden/auto/clip ni transform (ver LUGAR.md, «Para Web»). La clase
+   raíz es .lugar-mod (la sección de Web ya se llama .lugar).
+   ------------------------------------------------------------------ */
+[data-modulo="lugar"].lugar-mod {
+  --l-fondo: var(--fondo, Canvas);
+  --l-texto: var(--texto, CanvasText);
+  --l-suave: var(--texto-suave, color-mix(in oklab, var(--l-texto) 68%, var(--l-fondo)));
+  /* sobre el fondo oscuro de #lugar, los verdes del logo (--marca, --acento) no contrastan: la casa y los botones
+     van en el color del texto (claro) y lo «de agua» (recorrido, parada actual, curva) en --agua-texto */
+  --l-casa: var(--l-texto);
+  --l-agua: var(--agua-texto, var(--agua, var(--l-texto)));
+  --l-linea: var(--linea, color-mix(in oklab, var(--l-texto) 18%, transparent));
+  --l-chip: color-mix(in oklab, var(--l-fondo) 84%, transparent);
+  --lugar-noche: 0;
+  --lugar-arriba: var(--cabecera, 0px);           /* la cabecera fija de la web: el escenario se fija debajo */
+  position: relative;
+  display: block;
+  font-family: var(--letra-texto, inherit);
+  color: var(--l-texto);
+}
+
+/* el plan B y las fuentes, al ancho del texto de la página (el div va a todo el ancho para el 3D) */
+.lugar-mod[data-modo="plano"] > .lugar__planob,
+.lugar-mod > .lugar__fuente { width: min(100% - 2 * var(--gutter, 16px), var(--ancho, 1240px)); margin-inline: auto; }
+
+/* ---------- el vuelo: una pista alta con el escenario fijado (se sale bajando o subiendo, sin secuestrar) ---------- */
+.lugar-mod .lugar__pista { position: relative; display: none; }
+.lugar-mod[data-modo="3d"] .lugar__pista { display: block; height: 520vh; height: 520svh; }
+.lugar-mod .lugar__escenario {                     /* --lugar-arriba: alto de una cabecera fija de Web, si la hay */
+  position: sticky; top: var(--lugar-arriba, 0px);
+  height: calc(100vh - var(--lugar-arriba, 0px)); height: calc(100svh - var(--lugar-arriba, 0px)); min-height: 420px;
+  overflow: hidden; isolation: isolate;
+  background: var(--superficie, var(--l-fondo));
+}
+.lugar-mod .lugar__poster,
+.lugar-mod .lugar__lienzo { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lugar-mod .lugar__poster { object-fit: cover; object-position: 50% 70%; z-index: 0; transition: opacity .9s ease; }
+.lugar-mod .lugar__lienzo { z-index: 1; opacity: 0; transition: opacity .9s ease; }
+.lugar-mod .lugar__escenario.lugar--listo .lugar__lienzo { opacity: 1; }
+.lugar-mod .lugar__escenario.lugar--listo .lugar__poster { opacity: 0; }
+
+/* rótulos sobre la escena: chip sobrio con un hilo hasta el punto */
+.lugar-mod .lugar__rotulos { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.lugar-mod .lugar__rotulo { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity .45s ease; will-change: transform; }
+.lugar-mod .lugar__rotulo.es-visible { opacity: 1; }
+.lugar-mod .lugar__rotulo::before {               /* el punto exacto */
+  content: ""; position: absolute; left: -3.5px; top: -3.5px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--l-fondo); border: 1.5px solid var(--l-texto);
+}
+.lugar-mod .lugar__rotulo > span {
+  position: absolute; left: 0; bottom: 15px; transform: translateX(-50%);
+  display: grid; gap: 2px; white-space: nowrap; text-align: center;
+  padding: .36em .7em .4em; background: var(--l-chip); color: var(--l-texto);
+  font-size: .8rem; line-height: 1.2; letter-spacing: .01em; border-radius: 3px;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.lugar-mod .lugar__rotulo > span::after {          /* el hilo */
+  content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 12px; background: var(--l-texto); opacity: .55;
+}
+.lugar-mod .lugar__rotulo b { font-weight: 600; font-family: var(--letra-titular, inherit); }
+.lugar-mod .lugar__rotulo small { font-size: .74em; color: var(--l-suave); font-family: var(--letra-cifras, inherit); letter-spacing: .02em; }
+.lugar-mod .lugar__rotulo--casa > span { background: var(--l-casa); color: var(--l-fondo); }
+.lugar-mod .lugar__rotulo--casa > span small { color: inherit; opacity: .85; }
+.lugar-mod .lugar__rotulo--casa > span::after { background: var(--l-casa); opacity: 1; }
+.lugar-mod .lugar__rotulo--casa::before { background: var(--l-casa); border-color: var(--l-fondo); }
+
+/* arriba a la izquierda: la hora, el sol y la marea de ahora */
+.lugar-mod .lugar__hud {
+  position: absolute; z-index: 3; left: clamp(16px, 4vw, 56px); top: clamp(14px, 3vh, 32px);
+  max-width: min(420px, calc(100% - 32px)); display: grid; gap: 10px; pointer-events: none;
+}
+.lugar-mod .lugar__hud .lugar__ahora {
+  margin: 0; padding: .55em .8em; font-size: .82rem; line-height: 1.45; background: var(--l-chip); border-radius: 4px;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.lugar-mod .lugar__hud .lugar__ahora b { font-weight: 600; color: var(--l-texto); }
+.lugar-mod .lugar__hud .lugar__ahora span { color: var(--l-suave); }
+.lugar-mod .lugar__hud .lugar__marea {
+  padding: .6em .8em .65em; background: var(--l-chip); border-radius: 4px;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+/* la marea (en el 3D y en el plano) */
+.lugar-mod .lugar__marea[hidden] { display: none; }
+.lugar-mod .lugar__marea p { margin: 0; }
+.lugar-mod .lugar__marea-cifra { display: flex; align-items: baseline; gap: .55em; }
+.lugar-mod .lugar__marea-cifra b {
+  font-family: var(--letra-cifras, inherit); font-weight: 600; font-size: 1.7rem; line-height: 1.05; color: var(--l-texto);
+  font-variant-numeric: tabular-nums;
+}
+.lugar-mod .lugar__marea-cifra span { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--l-suave); }
+.lugar-mod .lugar__marea-texto { margin-top: .3em !important; font-size: .84rem; line-height: 1.4; color: var(--l-suave); }
+.lugar-mod .lugar__marea-prox { margin-top: .45em !important; display: flex; flex-wrap: wrap; gap: .2em 1.1em; font-size: .8rem; color: var(--l-suave); }
+.lugar-mod .lugar__marea-prox b { color: var(--l-texto); font-family: var(--letra-cifras, inherit); font-weight: 600; }
+.lugar-mod .lugar__curva { display: block; width: 100%; height: auto; margin-top: .6em; overflow: visible; }
+.lugar-mod .lugar__curva path { fill: none; stroke: var(--l-agua); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.lugar-mod .lugar__curva text { fill: var(--l-suave); font: 9px/1 var(--letra-cifras, ui-monospace, monospace); }
+.lugar-mod .lugar__curva .lugar__curva-nota { font-style: italic; }
+.lugar-mod .lugar__curva .lugar__curva-arenal { stroke: var(--l-linea); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.lugar-mod .lugar__curva .lugar__curva-ahora { stroke: var(--l-texto); stroke-width: 1; opacity: .5; vector-effect: non-scaling-stroke; }
+.lugar-mod .lugar__curva circle { fill: var(--l-texto); }
+
+/* las cinco paradas, abajo */
+.lugar-mod .lugar__paradas {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; margin: 0;
+  padding: clamp(48px, 9vh, 96px) clamp(16px, 4vw, 56px) clamp(56px, 8vh, 76px);
+  list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px);
+  background: linear-gradient(to top, color-mix(in oklab, var(--l-fondo) 84%, transparent), color-mix(in oklab, var(--l-fondo) 0%, transparent));
+  pointer-events: none;
+}
+.lugar-mod .lugar__paradas li { position: relative; padding-top: 18px; opacity: .6; transition: opacity .5s ease; }
+.lugar-mod .lugar__paradas li::before {
+  content: ""; position: absolute; left: 0; top: 1px; width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid currentColor; transition: background-color .5s ease, border-color .5s ease;
+}
+.lugar-mod .lugar__paradas li::after { content: ""; position: absolute; left: 18px; right: 0; top: 6px; height: 1px; background: var(--l-linea); }
+.lugar-mod .lugar__paradas li.es-pasada { opacity: .78; }
+.lugar-mod .lugar__paradas li.es-pasada::before { background: currentColor; }
+.lugar-mod .lugar__paradas li.es-actual { opacity: 1; }
+.lugar-mod .lugar__paradas li.es-actual::before { background: var(--l-agua); border-color: var(--l-agua); }
+.lugar-mod .lugar__paradas b { display: block; font-family: var(--letra-titular, inherit); font-weight: 600; font-size: clamp(1rem, 1.25vw, 1.15rem); }
+.lugar-mod .lugar__paradas span { display: block; margin-top: .3em; font-size: .84rem; line-height: 1.4; color: var(--l-suave); max-width: 32ch; }
+
+.lugar-mod .lugar__pie3d {
+  position: absolute; z-index: 4; left: clamp(16px, 4vw, 56px); right: clamp(16px, 4vw, 56px); bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.lugar-mod .lugar__creditos { margin: 0; font-size: .72rem; color: var(--l-suave); }
+.lugar-mod .lugar__aviso {
+  position: absolute; z-index: 4; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0;
+  padding: .5em 1em; background: var(--l-chip); font-size: .85rem; border-radius: 4px;
+}
+.lugar-mod .lugar__fps {
+  position: absolute; z-index: 5; right: 8px; top: 8px; margin: 0; padding: 2px 6px; max-width: 60%;
+  font: 12px/1.3 var(--letra-cifras, ui-monospace, monospace); background: var(--l-chip);
+}
+
+/* ---------- botones ---------- */
+.lugar-mod .lugar__btn {
+  font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; border: 1px solid var(--l-agua);
+  background: var(--l-agua); color: var(--l-fondo); padding: .75em 1.25em; min-height: 44px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: .6em;
+}
+.lugar-mod .lugar__btn::before { content: ""; width: .55em; height: .55em; border-radius: 50%; border: 1.5px solid currentColor; }
+.lugar-mod .lugar__btn--suave { background: var(--l-chip); color: var(--l-texto); border-color: var(--l-linea); font-size: .8rem; font-weight: 500; padding: .5em .95em; min-height: 36px; }
+.lugar-mod .lugar__btn:focus-visible { outline: 2px solid var(--foco, var(--l-texto)); outline-offset: 3px; }
+.lugar-mod .lugar__btn[hidden] { display: none; }
+
+/* ---------- plan B (sin WebGL, movimiento reducido, móvil antes del botón) ---------- */
+.lugar-mod .lugar__planob {
+  display: grid; gap: clamp(16px, 2.4vw, 32px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-areas: "mapa vista" "mapa panel" "pasos pasos" "acciones acciones";
+  align-items: start;
+}
+.lugar-mod[data-modo="3d"] .lugar__planob { display: none; }
+.lugar-mod .lugar__mapa { grid-area: mapa; margin: 0; }
+.lugar-mod .lugar__vista { grid-area: vista; margin: 0; }
+.lugar-mod .lugar__panel { grid-area: panel; display: grid; gap: 14px; }
+.lugar-mod .lugar__marco { position: relative; overflow: hidden; aspect-ratio: 16 / 9; background: var(--superficie, var(--l-fondo)); border-radius: 4px; }
+.lugar-mod .lugar__marco > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; display: block; }
+.lugar-mod .lugar__marco--mapa { aspect-ratio: 1000 / 1218; }
+.lugar-mod .lugar__marco--mapa > img { object-fit: fill; }
+.lugar-mod .lugar__ruta { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.lugar-mod .lugar__ruta polyline {
+  fill: none; stroke: var(--l-agua); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 2 7; vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, .55));
+}
+.lugar-mod figcaption { margin-top: .6em; font-size: .88rem; line-height: 1.45; color: var(--l-suave); }
+/* la noche de ahora, sobre la vista dibujada */
+.lugar-mod .lugar__noche {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, #060a18, #1a2340 55%, #0c1424);
+  mix-blend-mode: multiply; opacity: calc(var(--lugar-noche) * .82);
+}
+.lugar-mod .lugar__marcas { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.lugar-mod .lugar__marca { position: absolute; width: 0; height: 0; }
+.lugar-mod .lugar__marca::before {
+  content: ""; position: absolute; left: -4.5px; top: -4.5px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--l-fondo); border: 1.5px solid var(--l-texto);
+}
+.lugar-mod .lugar__marca > span {
+  position: absolute; left: 10px; top: -1.5em; white-space: nowrap; border-radius: 3px;
+  padding: .2em .55em; background: var(--l-chip); color: var(--l-texto); font-size: .76rem; line-height: 1.25;
+}
+.lugar-mod .lugar__marca > span small { display: block; font-size: .85em; color: var(--l-suave); }
+.lugar-mod .lugar__marca.a-la-izq > span { left: auto; right: 10px; }
+.lugar-mod .lugar__marca--casa::before { background: var(--l-casa); border-color: var(--l-fondo); box-shadow: 0 0 calc(var(--lugar-noche) * 14px) calc(var(--lugar-noche) * 4px) #ffc27a; }
+.lugar-mod .lugar__marca--casa > span { background: var(--l-casa); color: var(--l-fondo); }
+.lugar-mod .lugar__marca--casa > span small { color: inherit; opacity: .85; }
+.lugar-mod .lugar__panel .lugar__ahora { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--l-suave); }
+.lugar-mod .lugar__panel .lugar__marea { padding: 14px 16px; border: 1px solid var(--l-linea); border-radius: 4px; }
+.lugar-mod .lugar__pasos {
+  grid-area: pasos; margin: 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px);
+}
+.lugar-mod .lugar__pasos li { position: relative; padding-top: 18px; }
+.lugar-mod .lugar__pasos li::before { content: ""; position: absolute; left: 0; top: 1px; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--l-agua); }
+.lugar-mod .lugar__pasos li::after { content: ""; position: absolute; left: 18px; right: 0; top: 6px; height: 1px; background: var(--l-linea); }
+.lugar-mod .lugar__pasos b { display: block; font-family: var(--letra-titular, inherit); font-weight: 600; font-size: 1.02rem; }
+.lugar-mod .lugar__pasos span { display: block; margin-top: .3em; font-size: .92rem; line-height: 1.5; color: var(--l-suave); }
+.lugar-mod .lugar__acciones { grid-area: acciones; margin: 0; }
+.lugar-mod .lugar__fuente { margin: 14px 0 0; font-size: .76rem; line-height: 1.5; color: var(--l-suave); max-width: 120ch; }
+.lugar-mod[data-modo="3d"] .lugar__fuente { margin-top: 10px; }
+
+/* ---------- móvil ---------- */
+@media (max-width: 820px) {
+  .lugar-mod[data-modo="3d"] .lugar__pista { height: 480vh; height: 480svh; }
+  .lugar-mod .lugar__paradas { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .lugar-mod .lugar__paradas li:not(.es-actual) { display: none; }
+  .lugar-mod .lugar__paradas span { max-width: none; }
+  .lugar-mod .lugar__pie3d { align-items: flex-end; }
+  .lugar-mod .lugar__creditos { font-size: .64rem; max-width: 52%; }
+  .lugar-mod .lugar__rotulo > span { font-size: .7rem; }
+  .lugar-mod .lugar__hud { gap: 6px; }
+  .lugar-mod .lugar__hud .lugar__ahora { font-size: .72rem; padding: .45em .65em; }
+  .lugar-mod .lugar__hud .lugar__marea { padding: .45em .65em; }
+  .lugar-mod .lugar__hud .lugar__marea-cifra b { font-size: 1.25rem; }
+  .lugar-mod .lugar__hud .lugar__marea-texto, .lugar-mod .lugar__hud .lugar__marea-prox { font-size: .7rem; }
+  .lugar-mod .lugar__planob { grid-template-columns: 1fr; grid-template-areas: "mapa" "vista" "panel" "pasos" "acciones"; }
+  .lugar-mod .lugar__marco { aspect-ratio: 4 / 3; }
+  .lugar-mod .lugar__marco--mapa { aspect-ratio: 1000 / 1218; }
+  .lugar-mod .lugar__pasos { grid-template-columns: 1fr 1fr; }
+  .lugar-mod .lugar__acciones .lugar__btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 460px) {
+  .lugar-mod .lugar__pasos { grid-template-columns: 1fr; }
+  .lugar-mod .lugar__hud .lugar__ahora span { display: none; }   /* en el móvil estrecho, solo «15:42 en Navia · el sol de ahora» */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lugar-mod .lugar__poster, .lugar-mod .lugar__lienzo, .lugar-mod .lugar__rotulo, .lugar-mod .lugar__paradas li, .lugar-mod .lugar__paradas li::before { transition: none; }
+}

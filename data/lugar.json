@@ -1,0 +1,12 @@
+{
+ "cotaFinca": 54,
+ "cotaFincaNota": "metros sobre el nivel medio del mar: terreno en el centro de la casa roja (MDT05 del IGN)",
+ "cotaTerraza": 58.8,
+ "distanciaPlaya": 700,
+ "distanciaPlayaNota": "metros en línea recta del centro de la casa al borde de la playa de Navia (polígono de OSM)",
+ "distanciaBocana": 950,
+ "distanciaNavia": 1100,
+ "arenalesHa": 23.6,
+ "fuente": "scripts/lugar-datos.py (agente Lugar 3D)",
+ "fecha": "2026-11-25"
+}

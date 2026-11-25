@@ -1,0 +1,36 @@
+<!-- el buscador (js/reserva.js): calendario propio de llegada y salida, con validación. Al pulsar «Buscar en su motor» se
+     CREA el iframe de su WuBook con ?lcode=1601452661&dfrom=DD/MM/AAAA&dto=DD/MM/AAAA&lang=es (antes no existe: pone
+     cookies). WuBook no acepta por URL las personas ni la unidad: eso se elige dentro de su motor. -->
+<p class="real" role="note"><svg class="ico" aria-hidden="true"><use href="#i-olivo"/></svg><span><b>Es su motor de reservas real.</b> Lo que se abre aquí es el motor de Apartamentos Montemar (WuBook): las reservas que hagas dentro son de verdad. Esta web es una propuesta y no guarda nada.</span></p>
+
+<form class="busca" id="busca" novalidate>
+  <div class="busca__cal">
+    <div class="busca__fechas" aria-live="polite">
+      <p><span class="busca__eti">Llegada</span><b data-fecha="entrada">Elige día</b></p>
+      <p><span class="busca__eti">Salida</span><b data-fecha="salida">Elige día</b></p>
+      <p class="busca__noches cifra" data-noches></p>
+    </div>
+    <div class="cal" id="cal" role="group" aria-label="Calendario de llegada y salida">
+      <noscript><p>El calendario necesita JavaScript. Abre su <a href="https://wubook.net/wbkd/wbk/?lcode=1601452661&amp;lang=es" target="_blank" rel="noopener">motor de reservas</a> o llama al <a href="tel:+34649972451">649 972 451</a>.</p></noscript>
+    </div>
+  </div>
+
+  <div class="busca__lado">
+    <p class="busca__resumen" data-resumen>Elige el día de llegada.</p>
+    <p class="busca__error" id="busca-error" role="alert" hidden></p>
+    <p class="busca__pista">En su motor eliges después cuántos sois y si quieres un apartamento o el chalet.</p>
+    <button class="btn btn--acento busca__ir" type="submit" id="busca-ir">Buscar en su motor</button>
+    <p class="busca__otros"><button type="button" class="enlace" id="motor-sin-fechas">Abrir su motor sin fechas</button></p>
+  </div>
+</form>
+
+<div class="motor" id="motor" aria-live="polite">
+  <div class="motor__vacio" id="motor-vacio">
+    <img class="motor__logo" src="marca/simbolo.svg" width="436" height="368" alt="" loading="lazy" decoding="async">
+    <p>Aquí se abrirá su motor de reservas con tus fechas: las noches libres, el precio y la reserva.</p>
+  </div>
+  <p class="motor__estado" id="motor-estado"></p>
+  <p class="motor__fuera" id="motor-fuera-p" hidden><a id="motor-fuera" href="https://wubook.net/wbkd/wbk/?lcode=1601452661&amp;lang=es" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-fuera"/></svg>Abrir su motor en otra pestaña<span class="vh"> (se abre en otra pestaña)</span></a></p>
+</div>
+
+<p class="reservar__alt">¿Prefieres llamar o escribir? <a class="cifra" href="tel:+34649972451">649 972 451</a> o <a href="mailto:monte-mar@outlook.com">monte-mar@outlook.com</a></p>

@@ -1,0 +1,126 @@
+{
+ "_fuente": "ref/DATOS-MONTEMAR.md (2026-11-25). Lo que no está ahí no se escribe: va a PENDIENTES.md o «por confirmar».",
+ "contacto": {
+  "telefono": "+34649972451",
+  "telefonoTexto": "649 972 451",
+  "correo": "monte-mar@outlook.com",
+  "direccion": ["Camino Montemar, s/n", "33710 Navia (Asturias)"],
+  "lat": 43.548577,
+  "lon": -6.718882,
+  "webActual": "https://www.monte-mar.es"
+ },
+ "titular": {
+  "nombre": "MONTEMAR - NAVIA S.L.",
+  "nif": "B-74331406",
+  "registroMercantil": "Registro Mercantil de Asturias, tomo 3992, folio 215, hoja AS-44283",
+  "representante": "José Manuel Suárez Fernández",
+  "domicilio": "Camino Montemar, s/n, 33710 Navia (Asturias)",
+  "registroTuristico": "AT0123 (Registro de Actividades Turísticas del Principado de Asturias), apartamento turístico de 2 llaves",
+  "registroChalet": "por confirmar"
+ },
+ "wubook": {
+  "lcode": "1601452661",
+  "base": "https://wubook.net/wbkd/wbk/?lcode=1601452661&lang=es"
+ },
+ "webcam": "http://185.154.211.67:8000/cgi-bin/mjpg/video.cgi?channel=1",
+ "unidades": [
+  {
+   "id": "apartamento",
+   "nombre": "Los apartamentos",
+   "corto": "Apartamento",
+   "titulo": "Cuatro apartamentos iguales en la casa roja",
+   "texto": "Salón abierto a la cocina, dos habitaciones y un baño. Están en la casa principal, la del porche de columnas blancas.",
+   "foto": "casa-roja",
+   "fotoAlt": "La casa principal: dos plantas rojas con ventanas de marco blanco, porche de columnas blancas y escalera exterior",
+   "cifras": [
+    { "v": "4", "t": "apartamentos iguales" },
+    { "v": "2", "t": "habitaciones en cada uno" },
+    { "v": "1", "t": "baño" },
+    { "v": "4-6", "t": "personas por apartamento" }
+   ],
+   "cifrasNota": "Las plazas, según el Registro de Actividades Turísticas del Principado (AT0123).",
+   "servicios": [
+    { "icono": "cocina", "nombre": "Salón con cocina", "detalle": "en el mismo espacio, con la mesa" },
+    { "icono": "cama", "nombre": "Dos habitaciones", "detalle": "" },
+    { "icono": "ducha", "nombre": "Baño completo", "detalle": "con ducha" }
+   ]
+  },
+  {
+   "id": "chalet",
+   "nombre": "El chalet",
+   "corto": "Chalet",
+   "titulo": "Un chalet de piedra, con chimenea y patio",
+   "texto": "Salón amplio y comedor abiertos a la cocina, una habitación con su propio baño, dos habitaciones más y un segundo baño.",
+   "foto": "chalet-salon",
+   "fotoAlt": "El salón del chalet: sofá, mesa de comedor de madera y la chimenea encastrada en la pared blanca",
+   "cifras": [
+    { "v": "1", "t": "chalet de piedra" },
+    { "v": "3", "t": "habitaciones" },
+    { "v": "2", "t": "baños" },
+    { "v": "?", "t": "personas: por confirmar", "pendiente": true }
+   ],
+   "cifrasNota": "Cuántas personas caben en el chalet está por confirmar con la casa.",
+   "servicios": [
+    { "icono": "chimenea", "nombre": "Chimenea", "detalle": "en el salón" },
+    { "icono": "cocina", "nombre": "Salón, comedor y cocina", "detalle": "abiertos, en un solo espacio" },
+    { "icono": "cama", "nombre": "Una habitación con baño propio", "detalle": "y dos habitaciones más" },
+    { "icono": "patio", "nombre": "Patio independiente", "detalle": "solo para el chalet" }
+   ]
+  }
+ ],
+ "finca": [
+  { "icono": "olivo", "nombre": "Pradera de olivos centenarios", "detalle": "los tres árboles del logo" },
+  { "icono": "toldo", "nombre": "Terraza con toldo", "detalle": "mirando a la ría y al mar" },
+  { "icono": "tobogan", "nombre": "Zona de juegos", "detalle": "para los niños, en la finca" }
+ ],
+ "condiciones": [
+  { "icono": "sabanas", "texto": "Toda la ropa de cama, incluida." },
+  { "icono": "limpieza", "texto": "Limpieza una vez a la semana." },
+  { "icono": "toalla", "texto": "Cambio de toallas cada día, si lo pides." },
+  { "icono": "sin-mascotas", "texto": "No se admiten mascotas." }
+ ],
+ "estancias": [
+  {
+   "id": "apartamento", "nombre": "Un apartamento", "corto": "Apartamento",
+   "texto": "Los cuatro son iguales: el salón con la cocina, dos habitaciones y el baño.",
+   "fotos": [
+    { "n": "apto-salon", "alt": "Salón del apartamento con la cocina de madera, la mesa con cuatro sillas, el sofá y la ventana" },
+    { "n": "apto-matrimonio", "alt": "Habitación de matrimonio con colcha mostaza y una ventana grande con vistas a los árboles" },
+    { "n": "apto-dos-camas", "alt": "Habitación de dos camas con colchas verdes, cabeceros de madera y una pared de pizarra" },
+    { "n": "apto-bano", "alt": "Baño blanco con lavabo sobre encimera de madera, inodoro y mampara de ducha" }
+   ]
+  },
+  {
+   "id": "chalet", "nombre": "El chalet", "corto": "Chalet",
+   "texto": "La casa de piedra: salón con chimenea, cocina abierta, tres habitaciones y dos baños.",
+   "fotos": [
+    { "n": "chalet-salon", "alt": "Salón y comedor del chalet con la chimenea encastrada, la mesa de madera y la lámpara de mimbre" },
+    { "n": "chalet-sofa", "alt": "El sofá del chalet frente a dos ventanas de madera, con el comedor y el aparador al fondo" },
+    { "n": "chalet-cocina", "alt": "Cocina blanca del chalet con frigorífico de acero, campana y una puerta acristalada al patio de piedra" },
+    { "n": "chalet-limones", "alt": "Habitación de matrimonio del chalet con cojines amarillos de limones y cabecero claro" },
+    { "n": "chalet-verde", "alt": "Habitación del chalet con cabecero de hierro blanco, colcha de flores y manta verde" },
+    { "n": "chalet-dos-camas", "alt": "Habitación del chalet con dos camas de cabecero de hierro blanco y una cortina de colores" },
+    { "n": "chalet-lavabo", "alt": "Lavabo del chalet: encimera blanca sobre madera y un espejo grande" },
+    { "n": "chalet-piedra", "alt": "El chalet por fuera: muro de pizarra, ventana de madera y tejado a dos aguas" }
+   ]
+  },
+  {
+   "id": "fuera", "nombre": "Fuera", "corto": "Fuera",
+   "texto": "La casa principal, la terraza y la pradera de olivos, con la ría y el mar delante.",
+   "fotos": [
+    { "n": "casa-roja", "alt": "La casa principal roja con el porche de columnas blancas a dos alturas y el zócalo de pizarra" },
+    { "n": "terraza", "alt": "La terraza con el toldo de rayas, sofás de exterior y la vista a la ría y al mar al atardecer" },
+    { "n": "olivos", "alt": "La pradera con los olivos centenarios a contraluz y, detrás, la ría de Navia y el mar" },
+    { "n": "amanecer", "alt": "Amanecer dorado sobre la finca: los olivos en silueta y los montes en capas detrás" }
+   ]
+  }
+ ],
+ "resenas": {
+  "nota": "4,8",
+  "sobre": "5",
+  "recuento": 78,
+  "fuente": "Google",
+  "ficha": "https://www.google.com/maps/search/?api=1&query=Apartamentos%20Montemar%2C%20Camino%20Montemar%2C%2033710%20Navia",
+  "otra": { "nota": "9,7", "sobre": "10", "recuento": 92, "fuente": "su motor de reservas (WuBook)" }
+ }
+}

@@ -1,0 +1,208 @@
+[
+ {
+  "nombre": "olivos",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1780
+  ],
+  "ancho": 1780,
+  "alto": 800,
+  "origen": "origen/web/slider1.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "casa-roja",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1780
+  ],
+  "ancho": 1780,
+  "alto": 800,
+  "origen": "origen/web/slider2.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "amanecer",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1780
+  ],
+  "ancho": 1780,
+  "alto": 663,
+  "origen": "origen/web/slider3.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "terraza",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/10-397162581.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "apto-dos-camas",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/01-397162472.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "apto-matrimonio",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/02-397162525.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "apto-bano",
+  "anchos": [
+   500
+  ],
+  "ancho": 500,
+  "alto": 667,
+  "origen": "origen/ficha/03-397162532.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "apto-salon",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/06-397162550.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-salon",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/08-397162561.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-sofa",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/09-397162571.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-cocina",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/07-397162554.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-limones",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/05-397162546.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-verde",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/11-397162597.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-dos-camas",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 675,
+  "origen": "origen/ficha/12-397162607.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-lavabo",
+  "anchos": [
+   500
+  ],
+  "ancho": 500,
+  "alto": 667,
+  "origen": "origen/ficha/04-397162541.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "chalet-piedra",
+  "anchos": [
+   500
+  ],
+  "ancho": 500,
+  "alto": 375,
+  "origen": "origen/ficha/14-397162616.jpg",
+  "foco": null
+ },
+ {
+  "nombre": "webcam",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1000,
+  "origen": "origen/webcam-fotograma-2026-11-25.jpg",
+  "foco": null
+ }
+]

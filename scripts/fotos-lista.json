@@ -1,0 +1,19 @@
+[
+ {"nombre": "olivos", "ruta": "origen/web/slider1.jpg", "tipo": "ext", "sat": 0.97, "fuerza": 0.55, "nota": "PORTADA (el LCP): la pradera de olivos a contraluz con la ría y el mar detrás. 1780x800, nitidez 1,22 (real; viene enfocada). De aquí sale la capa recortada de los olivos (scripts/portada-capas.py)."},
+ {"nombre": "casa-roja", "ruta": "origen/web/slider2.jpg", "tipo": "ext", "fuerza": 0.6, "nota": "la casa principal (apartamentos): roja, porche de columnas blancas a dos alturas, escalera exterior. 1780x800, nitidez 0,88"},
+ {"nombre": "amanecer", "ruta": "origen/web/slider3.jpg", "tipo": "ext", "fuerza": 0, "nota": "amanecer dorado: los olivos en silueta y los montes en capas. 1780x663, nitidez 0,69. Sin gradación (es luz de amanecer)"},
+ {"nombre": "terraza", "ruta": "origen/ficha/10-397162581.jpg", "tipo": "ext", "fuerza": 0.6, "nota": "la terraza con toldo mirando a la ría y al mar. 1024x675, nitidez 0,81"},
+ {"nombre": "apto-dos-camas", "ruta": "origen/ficha/01-397162472.jpg", "tipo": "int", "nota": "apartamento: dormitorio de dos camas con la pared de pizarra. 1024, 0,74"},
+ {"nombre": "apto-matrimonio", "ruta": "origen/ficha/02-397162525.jpg", "tipo": "int", "nota": "apartamento: dormitorio de cama de matrimonio. 1024, 0,73"},
+ {"nombre": "apto-bano", "ruta": "origen/ficha/03-397162532.jpg", "tipo": "int", "nota": "apartamento: baño con ducha (vertical, 500x667, 0,68): solo pequeña"},
+ {"nombre": "apto-salon", "ruta": "origen/ficha/06-397162550.jpg", "tipo": "int", "nota": "apartamento: salón abierto a la cocina, con la mesa. 1024, 0,70"},
+ {"nombre": "chalet-salon", "ruta": "origen/ficha/08-397162561.jpg", "tipo": "int", "nota": "chalet: salón y comedor con la chimenea. 1024, 0,73"},
+ {"nombre": "chalet-sofa", "ruta": "origen/ficha/09-397162571.jpg", "tipo": "int", "nota": "chalet: el sofá y el comedor con las ventanas. 1024, 0,72"},
+ {"nombre": "chalet-cocina", "ruta": "origen/ficha/07-397162554.jpg", "tipo": "int", "nota": "chalet: cocina blanca con la puerta al patio de piedra. 1024, 0,69"},
+ {"nombre": "chalet-limones", "ruta": "origen/ficha/05-397162546.jpg", "tipo": "int", "nota": "chalet: dormitorio de matrimonio (cojines de limones). 1024, 0,74"},
+ {"nombre": "chalet-verde", "ruta": "origen/ficha/11-397162597.jpg", "tipo": "int", "nota": "chalet: dormitorio de cabecero de hierro y colcha de flores. 1024, 0,78"},
+ {"nombre": "chalet-dos-camas", "ruta": "origen/ficha/12-397162607.jpg", "tipo": "int", "nota": "chalet: dormitorio de dos camas con cabeceros blancos. 1024, 0,72"},
+ {"nombre": "chalet-lavabo", "ruta": "origen/ficha/04-397162541.jpg", "tipo": "int", "nota": "chalet: el lavabo (vertical, 500x667, 0,75): solo pequeña"},
+ {"nombre": "chalet-piedra", "ruta": "origen/ficha/14-397162616.jpg", "tipo": "ext", "fuerza": 0.6, "nota": "el chalet de piedra por fuera (500x375, 1,13): solo pequeña. Pedir una mayor"},
+ {"nombre": "webcam", "ruta": "origen/webcam-fotograma-2026-11-25.jpg", "tipo": "ext", "fuerza": 0, "recorte": {"left": 0, "top": 0, "width": 1920, "height": 1000}, "nota": "RESPALDO de #lugar: fotograma de su webcam (25-nov-2026), la desembocadura con los espigones, el pinar y el mar. Sin la franja de abajo con el rótulo de la web. Nitidez 0,72"}
+]
