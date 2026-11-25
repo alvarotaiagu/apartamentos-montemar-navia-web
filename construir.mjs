@@ -172,22 +172,30 @@ function alrededor() {
   const cerca = ['playa', 'navia'].map((id) => {
     const d = D2[id];
     const p = d && d.pie;
-    return `      <li class="cerca__item" data-ruta="${id}">${ico('pie')}<b class="cerca__nombre">${esc(d ? d.nombre : id)}</b>${p ? `<span class="cerca__min cifra">${p.minutos}<small> min</small></span><span class="cerca__km cifra">${kmTxt(p.km)} andando</span>` : '<span class="cerca__km">por confirmar</span>'}</li>`;
+    const c = d && d.coche;
+    return `      <li class="cerca__item" data-ruta="${id}"${d ? ` data-lat="${d.lat}" data-lon="${d.lon}"` : ''}${c ? ` data-coche="${tiempoTxt(c.minutos)} · ${kmTxt(c.km)}"` : ''}>${ico('pie')}<b class="cerca__nombre">${esc(d ? d.nombre : id)}</b>${p ? `<span class="cerca__min cifra">${p.minutos}<small> min</small></span><span class="cerca__km cifra">${kmTxt(p.km)} andando</span>` : '<span class="cerca__km">por confirmar</span>'}</li>`;
   }).join('\n');
   const cols = RUMBOS.map(([r, tit, sub]) => {
     const ids = R.orden.filter((id) => D2[id] && D2[id].rumbo === r);
     return `      <section class="rumbo rumbo--${r}" aria-labelledby="t-rumbo-${r}">
         <h3 class="rumbo__tit" id="t-rumbo-${r}">${tit}<small>${sub}</small></h3>
         <ol class="rumbo__lista">
-${ids.map((id) => { const d = D2[id]; const c = d.coche; return `          <li data-ruta="${id}"><b>${esc(d.nombre)}</b>${c ? `<span class="rumbo__min cifra">${tiempoTxt(c.minutos)}</span><span class="rumbo__km cifra">${kmTxt(c.km)}</span>` : '<span class="rumbo__km">por confirmar</span>'}</li>`; }).join('\n')}
+${ids.map((id) => { const d = D2[id]; const c = d.coche; return `          <li data-ruta="${id}" data-lat="${d.lat}" data-lon="${d.lon}"${c && c.carreteras && c.carreteras.length ? ` data-carreteras="${esc([...new Set(c.carreteras)].join(' · '))}"` : ''}><b>${esc(d.nombre)}</b>${c ? `<span class="rumbo__min cifra">${tiempoTxt(c.minutos)}</span><span class="rumbo__km cifra">${kmTxt(c.km)}</span>` : '<span class="rumbo__km">por confirmar</span>'}</li>`; }).join('\n')}
         </ol>
       </section>`;
   }).join('\n');
-  return `    <ul class="cerca" aria-label="A pie desde la casa">
+  // la lista es el contenido y el respaldo; js/alrededor.js la vuelve el mando del mapa (data/alrededor-mapa.json)
+  const conMapa = fs.existsSync(path.join(RAIZ, 'data/alrededor-mapa.json')) && fs.existsSync(path.join(RAIZ, 'js/alrededor.js'));
+  return `    <div class="alr${conMapa ? '' : ' sin-modulo'}"${conMapa ? ' data-modulo="alrededor"' : ''}>
+    <div class="alr__lista">
+    <ul class="cerca" aria-label="A pie desde la casa">
 ${cerca}
     </ul>
     <div class="rumbos">
 ${cols}
+    </div>
+    </div>
+    <div class="alr__mapa"></div>
     </div>
     <p class="alrededor__fino">En coche, por carretera, y a pie, por calles y caminos, desde la casa. Calculado con OSRM sobre datos de © colaboradores de OpenStreetMap el ${fecha}: tiempos sin tráfico ni paradas, orientativos. A la playa, hasta el punto de la arena más cercano.</p>`;
 }

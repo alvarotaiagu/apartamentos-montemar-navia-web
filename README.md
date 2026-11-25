@@ -71,7 +71,10 @@ oscuro** (texto `#EEF3EE` sobre `#0E1C14`, 15,6:1).
 5. **La ría, ahora** (`#lugar`, oscura): el 3D de Lugar 3D. Respaldo de la Web: el fotograma de su webcam (sin la franja
    del rótulo) y su pie.
 6. **Alrededor**: a pie (la playa y Navia, en grande) y en coche por rumbos (hacia Galicia, tierra adentro, hacia Luarca),
-   **todo de OSRM** (`ref/raw/rutas.json`).
+   **todo de OSRM** (`ref/raw/rutas.json`). **Con mapa interactivo** (`js/alrededor.js`): la lista es el mando; al
+   elegir un sitio el mapa vuela hasta él y la ruta se dibuja desde la casa (a pie a la playa y a Navia, con la de coche
+   en discontinua; en coche al resto), y una ficha da tiempo, kilómetros, carreteras y el enlace a Google Maps. En
+   móvil la lista es una tira que se desliza sobre el mapa. Sin JS, o si el mapa falla, queda la lista sola.
 7. **Reseñas**: 4,8 sobre 5 con 78 reseñas en Google (recuento suficiente) y 9,7 sobre 10 con 92 en su motor; cinco
    copas como las del logo. Sin citas.
 8. **Reservar**: buscador propio (llegada y salida con validación) que **crea** el iframe de su WuBook real al pulsar
@@ -125,6 +128,7 @@ python -I -X utf8 scripts/portada-capas.py      # img/portada/ (cielo, olivos co
 python -I -X utf8 scripts/marca-logo.py         # marca/*.svg y logo.json
 node scripts/marca.mjs                          # favicons, img/og.jpg y el control del logo
 node scripts/alrededor-rutas.mjs                # distancias OSRM → ref/raw/rutas.json
+node scripts/alrededor-mapa.mjs                 # costa, ríos, callejero y trazados (OSM, OSRM) → data/alrededor-mapa.json
 node scripts/paleta.mjs                         # contraste de la paleta (WCAG y APCA)
 node scripts/legales.mjs                        # *.src.html de las legales y el 404
 node construir.mjs                              # partes, datos, fotos → *.html; versionar.mjs pone ?v=<huella>
@@ -145,6 +149,7 @@ y `js/lugar.js`**: esos se quedan siempre (sin ellos, la página usa el respaldo
 | Módulo | Agente | Hueco | Ficheros |
 |---|---|---|---|
 | `portada` | Web | `#portada [data-modulo="portada"]` (respaldo: las capas quietas; es el LCP) | `js/portada.js` (CSS en `css/estilos.css`) |
+| `alrededor` | Web | `#alrededor [data-modulo="alrededor"]` (respaldo: la lista de sitios, que ya es el contenido) | `js/alrededor.js`, `data/alrededor-mapa.json`, `scripts/alrededor-mapa.mjs` (CSS en `css/estilos.css`; SVG, sin WebGL; receta de Amaicha) |
 | `lugar` | Lugar 3D | `#lugar [data-modulo="lugar"]` (respaldo: el fotograma de su webcam y su pie) | `js/lugar.js`, `css/lugar.css`, `img/lugar/`, `data/lugar*.json`, `vendor/`, `scripts/lugar-*` → [`LUGAR.md`](LUGAR.md) |
 
 Contrato: `Montemar.<mod>.montar(el, { movimiento, densidad, webgl })` → `{ destruir() }`. `main.js` monta la portada al
@@ -212,6 +217,10 @@ portada y «Dónde te quedas»). Corregida, el bloque 3 vuelve a pasar: **9 bien
 portada a cinco tamaños, contraste/foco/fondo/medidor, fichas y visor por nombre, el tiempo (y su fallo), el buscador y el
 iframe de WuBook (escritorio y móvil), cookies y mapa, mando de densidades, móvil, legales y hueco del 3D y, una vez,
 con movimiento (capas, gesto táctil por CDP, pie, recarga).
+
+Con el mapa de «Alrededor» (2026-11-25, tarde): `node verificar.mjs` dio **149 bien, 0 mal** en el pase entero; tras la revisión de código (el mar no llegaba al norte en las vistas largas, ya corregido en los datos) se añadió su prueba y los bloques 1, 3 y 9 se repitieron: **96 bien, 0 mal** (ocho comprobaciones
+nuevas: trazados, montaje, elegir con la lista, con una marca y con el teclado, el mar al norte, el fallo de datos y el móvil). El mapa
+pintado no lo ha visto nadie todavía.
 
 `node ../plantillas-negocios-web/scripts/repeticion.mjs ../apartamentos-montemar-navia-web` (2026-11-25): en las últimas
 diez webs no domina ninguna pieza (marquesina, letra a letra, cursor, cortina y serif 0/10; crema con acento 1/10).

@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Fustat:wght@300..700&family=Noto+Sans+Mono:wght@400..600&display=swap">
 <link rel="stylesheet" href="css/base.css?v=7b67c9e5">
-<link rel="stylesheet" href="css/estilos.css?v=a0a337a8">
+<link rel="stylesheet" href="css/estilos.css?v=5710ff8b">
 <link rel="stylesheet" href="css/lugar.css?v=bf4efa94">
 <link rel="icon" href="marca/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
@@ -366,35 +366,40 @@
       <h2 id="t-alrededor" class="sec-tit" data-aparece>Alrededor</h2>
       <p class="sec-txt">La playa y Navia, andando. La costa hacia Galicia o hacia Luarca, y los Oscos tierra adentro, en coche.</p>
     </header>
+    <div class="alr" data-modulo="alrededor">
+    <div class="alr__lista">
     <ul class="cerca" aria-label="A pie desde la casa">
-      <li class="cerca__item" data-ruta="playa"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Playa de Navia</b><span class="cerca__min cifra">17<small> min</small></span><span class="cerca__km cifra">1,3 km andando</span></li>
-      <li class="cerca__item" data-ruta="navia"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Navia</b><span class="cerca__min cifra">21<small> min</small></span><span class="cerca__km cifra">1,6 km andando</span></li>
+      <li class="cerca__item" data-ruta="playa" data-lat="43.554544" data-lon="-6.721427" data-coche="3 min · 1,2 km"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Playa de Navia</b><span class="cerca__min cifra">17<small> min</small></span><span class="cerca__km cifra">1,3 km andando</span></li>
+      <li class="cerca__item" data-ruta="navia" data-lat="43.539111" data-lon="-6.72337" data-coche="4 min · 1,7 km"><svg class="ico" aria-hidden="true"><use href="#i-pie"/></svg><b class="cerca__nombre">Navia</b><span class="cerca__min cifra">21<small> min</small></span><span class="cerca__km cifra">1,6 km andando</span></li>
     </ul>
     <div class="rumbos">
       <section class="rumbo rumbo--oeste" aria-labelledby="t-rumbo-oeste">
         <h3 class="rumbo__tit" id="t-rumbo-oeste">Hacia Galicia<small>La costa al oeste</small></h3>
         <ol class="rumbo__lista">
-          <li data-ruta="tapia"><b>Tapia de Casariego</b><span class="rumbo__min cifra">19 min</span><span class="rumbo__km cifra">21 km</span></li>
-          <li data-ruta="ribadeo"><b>Ribadeo</b><span class="rumbo__min cifra">24 min</span><span class="rumbo__km cifra">31 km</span></li>
-          <li data-ruta="catedrales"><b>Playa de las Catedrales</b><span class="rumbo__min cifra">30 min</span><span class="rumbo__km cifra">40 km</span></li>
+          <li data-ruta="tapia" data-lat="43.569606" data-lon="-6.943922" data-carreteras="N-634"><b>Tapia de Casariego</b><span class="rumbo__min cifra">19 min</span><span class="rumbo__km cifra">21 km</span></li>
+          <li data-ruta="ribadeo" data-lat="43.536159" data-lon="-7.043678" data-carreteras="N-634 · A-8"><b>Ribadeo</b><span class="rumbo__min cifra">24 min</span><span class="rumbo__km cifra">31 km</span></li>
+          <li data-ruta="catedrales" data-lat="43.55433" data-lon="-7.156292" data-carreteras="N-634 · A-8 · LU-P-5209 · LU-P-0610"><b>Playa de las Catedrales</b><span class="rumbo__min cifra">30 min</span><span class="rumbo__km cifra">40 km</span></li>
         </ol>
       </section>
       <section class="rumbo rumbo--interior" aria-labelledby="t-rumbo-interior">
         <h3 class="rumbo__tit" id="t-rumbo-interior">Tierra adentro<small>El castro, Taramundi y los Oscos</small></h3>
         <ol class="rumbo__lista">
-          <li data-ruta="coana"><b>Castro de Coaña</b><span class="rumbo__min cifra">8 min</span><span class="rumbo__km cifra">6,1 km</span></li>
-          <li data-ruta="taramundi"><b>Taramundi</b><span class="rumbo__min cifra">49 min</span><span class="rumbo__km cifra">54 km</span></li>
-          <li data-ruta="oscos"><b>Santa Eulalia de Oscos</b><span class="rumbo__min cifra">1 h 02 min</span><span class="rumbo__km cifra">67 km</span></li>
+          <li data-ruta="coana" data-lat="43.510862" data-lon="-6.749663" data-carreteras="AS-12"><b>Castro de Coaña</b><span class="rumbo__min cifra">8 min</span><span class="rumbo__km cifra">6,1 km</span></li>
+          <li data-ruta="taramundi" data-lat="43.360568" data-lon="-7.108822" data-carreteras="N-634 · A-8 · N-640 · AS-21"><b>Taramundi</b><span class="rumbo__min cifra">49 min</span><span class="rumbo__km cifra">54 km</span></li>
+          <li data-ruta="oscos" data-lat="43.258743" data-lon="-7.020435" data-carreteras="N-634 · A-8 · N-640 · AS-11 · AS-27"><b>Santa Eulalia de Oscos</b><span class="rumbo__min cifra">1 h 02 min</span><span class="rumbo__km cifra">67 km</span></li>
         </ol>
       </section>
       <section class="rumbo rumbo--este" aria-labelledby="t-rumbo-este">
         <h3 class="rumbo__tit" id="t-rumbo-este">Hacia Luarca<small>La costa al este y el aeropuerto</small></h3>
         <ol class="rumbo__lista">
-          <li data-ruta="puertovega"><b>Puerto de Vega</b><span class="rumbo__min cifra">12 min</span><span class="rumbo__km cifra">7,1 km</span></li>
-          <li data-ruta="luarca"><b>Luarca</b><span class="rumbo__min cifra">18 min</span><span class="rumbo__km cifra">21 km</span></li>
-          <li data-ruta="ovd"><b>Aeropuerto de Asturias</b><span class="rumbo__min cifra">50 min</span><span class="rumbo__km cifra">68 km</span></li>
+          <li data-ruta="puertovega" data-lat="43.564007" data-lon="-6.647533" data-carreteras="NV-2"><b>Puerto de Vega</b><span class="rumbo__min cifra">12 min</span><span class="rumbo__km cifra">7,1 km</span></li>
+          <li data-ruta="luarca" data-lat="43.5439" data-lon="-6.535741" data-carreteras="N-634 · A-8"><b>Luarca</b><span class="rumbo__min cifra">18 min</span><span class="rumbo__km cifra">21 km</span></li>
+          <li data-ruta="ovd" data-lat="43.561599" data-lon="-6.033074" data-carreteras="N-634 · A-8 · AI-82"><b>Aeropuerto de Asturias</b><span class="rumbo__min cifra">50 min</span><span class="rumbo__km cifra">68 km</span></li>
         </ol>
       </section>
+    </div>
+    </div>
+    <div class="alr__mapa"></div>
     </div>
     <p class="alrededor__fino">En coche, por carretera, y a pie, por calles y caminos, desde la casa. Calculado con OSRM sobre datos de © colaboradores de OpenStreetMap el 25 de noviembre de 2026: tiempos sin tráfico ni paradas, orientativos. A la playa, hasta el punto de la arena más cercano.</p>
   </div>
@@ -562,8 +567,9 @@
 <script src="js/portada.js?v=420c4a0b" defer></script>
 <script src="js/lugar.js?v=85aafa77" defer></script>
 <!-- la web -->
+<script src="js/alrededor.js?v=7930f69d" defer></script>
 <script src="js/tiempo.js?v=01ae6b50" defer></script>
 <script src="js/reserva.js?v=74fe96de" defer></script>
-<script src="js/main.js?v=5357e953" defer></script>
+<script src="js/main.js?v=b458cd63" defer></script>
 </body>
 </html>

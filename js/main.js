@@ -70,25 +70,28 @@
   function montarModulo(el) {
     if (montados.has(el)) return;
     const mod = modulo(el);
-    if (!mod) { esperando.add(el); return; }
+    if (!mod) { esperando.add(el); if (document.readyState === 'complete') el.classList.add('sin-modulo'); return; }
     esperando.delete(el);
+    el.classList.remove('sin-modulo');
     const respaldo = el.innerHTML;
     try {
       const inst = mod.montar(el, opciones());
       montados.set(el, { inst, respaldo });
-      if (inst && inst.listo && typeof inst.listo.catch === 'function') inst.listo.catch((er) => { console.warn('Módulo ' + el.dataset.modulo + ': se queda el respaldo', er); el.innerHTML = respaldo; delete el.dataset.montado; });
+      if (inst && inst.listo && typeof inst.listo.catch === 'function') inst.listo.catch((er) => { console.warn('Módulo ' + el.dataset.modulo + ': se queda el respaldo', er); el.innerHTML = respaldo; delete el.dataset.montado; el.classList.add('sin-modulo'); });
     } catch (er) {
       console.warn('Módulo ' + el.dataset.modulo + ': se queda el respaldo', er);
       el.innerHTML = respaldo;
+      el.classList.add('sin-modulo');
       montados.set(el, { inst: null, respaldo });
     }
   }
-  const reintentar = () => { if (esperando.size) [...esperando].forEach(montarModulo); };
+  const reintentar = () => { if (esperando.size) [...esperando].forEach(montarModulo); esperando.forEach((el) => el.classList.add('sin-modulo')); };
   addEventListener('load', reintentar);
   function remontarTodos() {
     [...montados].forEach(([el, { inst, respaldo }]) => {
       try { inst && inst.destruir && inst.destruir(); } catch (er) { console.warn(er); }
       el.innerHTML = respaldo;
+      el.classList.remove('sin-modulo');
       delete el.dataset.montado;
       montados.delete(el);
       montarModulo(el);

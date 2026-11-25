@@ -45,6 +45,7 @@ const existe = (f) => fs.existsSync(path.join(RAIZ, f));
 const leer = (f) => fs.readFileSync(path.join(RAIZ, f), 'utf8');
 const D = JSON.parse(leer('data/montemar.json'));
 const RUTAS = existe('ref/raw/rutas.json') ? JSON.parse(leer('ref/raw/rutas.json')) : null;
+const tiempoTxt = (m) => (m >= 60 ? Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') + ' min' : m + ' min');
 const kmTxt = (v) => (v < 10 ? String(Math.round(v * 10) / 10).replace('.', ',') : String(Math.round(v))) + ' km';
 const TIEMPO_FALSO = { current: { time: '2026-11-25T14:15', temperature_2m: 13.1, apparent_temperature: 8.7, weather_code: 1, is_day: 1, wind_speed_10m: 27.1, wind_direction_10m: 289, wind_gusts_10m: 50.4 } };
 const MAR_FALSO = { current: { time: '2026-11-25T14:15', wave_height: 3.38, wave_direction: 318, wave_period: 8.75 } };
@@ -117,11 +118,16 @@ const fotosJson = JSON.parse(leer('img/fotos/fotos.json'));
     const okR = RUTAS.orden.every((id) => { const d = RUTAS.destinos[id]; const v = id === 'playa' || id === 'navia' ? d.pie : d.coche; return v ? new RegExp(`data-ruta="${id}"[\\s\\S]*?${kmTxt(v.km)}`).test(bloque) : /por confirmar/.test(bloque); });
     comprobar(okR && (bloque.match(/data-ruta=/g) || []).length === RUTAS.orden.length, `Alrededor: los ${RUTAS.orden.length} destinos con las cifras de ref/raw/rutas.json (OSRM), ninguna a ojo`);
     comprobar(!/600 m|800 m|5 minutos andando|\b15 km\b/.test(texto), 'ninguna distancia copiada de su web sin comprobar (600 m, 800 m, 15 km)');
+    if (RUTAS && existe('data/alrededor-mapa.json')) {
+      const MAPA = JSON.parse(leer('data/alrededor-mapa.json'));
+      const sinTrazo = RUTAS.orden.filter((id) => !MAPA.rutas[id] || !MAPA.rutas[id].coche || ((id === 'playa' || id === 'navia') && !MAPA.rutas[id].pie));
+      comprobar(sinTrazo.length === 0 && MAPA.niveles.length === 3 && /data-modulo="alrededor"/.test(html) && html.indexOf('js/alrededor.js') > 0 && html.indexOf('js/alrededor.js') < html.indexOf('js/main.js'), `Alrededor: el mapa (data/alrededor-mapa.json, ${Math.round(leer('data/alrededor-mapa.json').length / 1024)} KB) trae el trazado de los ${RUTAS.orden.length} destinos (a pie, playa y Navia) y su módulo carga antes de main.js`, sinTrazo);
+    } else nota('sin data/alrededor-mapa.json: «Alrededor» va sin mapa');
   } else nota('sin ref/raw/rutas.json');
 
   /* contrato web ↔ módulos */
   const sitios = [...html.replace(/<!--[\s\S]*?-->/g, '').matchAll(/data-modulo="([^"]+)"/g)].map((m) => m[1]);
-  comprobar(JSON.stringify(sitios) === JSON.stringify(['portada', 'lugar']), 'los huecos de los módulos: portada y lugar', sitios);
+  comprobar(JSON.stringify(sitios) === JSON.stringify(existe('data/alrededor-mapa.json') ? ['portada', 'lugar', 'alrededor'] : ['portada', 'lugar']), 'los huecos de los módulos: portada, lugar y el mapa de Alrededor', sitios);
   comprobar(/<section id="lugar"[^>]*aria-labelledby="t-lugar">[\s\S]*?<div data-modulo="lugar">\s*<figure class="lugar__respaldo">[\s\S]*?webcam[\s\S]*?<figcaption>[\s\S]*?<\/figure>\s*<\/div>/.test(html), '#lugar: <div data-modulo="lugar"> con el respaldo (fotograma de su webcam y texto)');
   const cabeza = html.split('</head>')[0];
   comprobar(/<link rel="stylesheet" href="css\/lugar\.css/.test(cabeza) && /<script src="js\/lugar\.js[^"]*" defer><\/script>/.test(html) && html.indexOf('js/lugar.js') < html.indexOf('js/main.js') && html.indexOf('js/portada.js') < html.indexOf('js/main.js'), 'carga css/lugar.css (en el <head>) y js/lugar.js (defer, antes de main.js) aunque aún no existan');
@@ -301,6 +307,64 @@ try {
   comprobar(mP && m0.vis && m0.n === Math.round(lj) && mL && mA < m0.n && mA > 0 && mR === 0, `medidor: escondido sobre la portada, ${m0.n} m al empezar a bajar (data/lugar.json: ${lj}), oculto en el 3D, ${mA} m en Alrededor y 0 m al llegar a Reservar`, { mP, m0, mL, mA, mR });
   const medR = await page.evaluate(() => { const r = document.getElementById('medidor').getBoundingClientRect(); const e = document.querySelector('#alrededor .env').getBoundingClientRect(); return { med: r.left, contenido: e.right }; });
   comprobar(medR.med >= medR.contenido, 'en escritorio el medidor va en el margen, sin tapar contenido', medR);
+  // el mapa de «Alrededor»: la lista es el mando (SVG, sin WebGL; con movimiento reducido el mapa salta sin vuelo)
+  if (RUTAS && existe('data/alrededor-mapa.json')) {
+    await irA(page, '#alrededor', 0.1); await cuadro();
+    await page.waitForSelector('#alr-lienzo[data-listo]', { timeout: 8000 }).catch(() => {});
+    const leerMapa = () => page.evaluate(() => {
+      const q = (s) => document.querySelector(s), r = (e) => { const b = e.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height, r: b.right, b: b.bottom }; };
+      const lz = q('#alr-lienzo'), svg = q('.amapa__svg'), fi = q('.amapa__ficha'), pres = document.querySelector('.alr__btn[aria-pressed="true"]');
+      const id = pres ? pres.parentElement.dataset.ruta : null;
+      const marca = (s) => { const m = q(s); if (!m) return null; const t = new DOMMatrix(getComputedStyle(m).transform); const l = r(lz); return { x: l.x + t.m41, y: l.y + t.m42, fuera: m.classList.contains('fuera') }; };
+      const dentro = (p, c) => p && p.x > c.x && p.x < c.r && p.y > c.y && p.y < c.b;
+      const casa = marca('.amapa__marca--casa'), dest = id ? marca('.amapa__marca--sitio[data-ruta="' + id + '"]') : null, F = r(fi), L = r(lz);
+      return {
+        listo: lz.hasAttribute('data-listo'), botones: document.querySelectorAll('.alr__btn').length, id,
+        ancho: +svg.getAttribute('viewBox').split(' ')[2], aPie: svg.classList.contains('es-a-pie'),
+        niveles: [...document.querySelectorAll('.m-nivel')].filter((g) => g.style.display !== 'none').map((g) => g.dataset.nivel),
+        mar: getComputedStyle(q('.m-agua')).fill, tierra: getComputedStyle(lz).backgroundColor, ruta: (q('.m-sel').getAttribute('d') || '').length,
+        tit: (q('.ficha__tit') || {}).textContent, ficha: fi.textContent, ir: (q('.ficha__ir') || {}).href,
+        lienzo: L, lista: r(q('.alr__lista')), fichaDentro: F.x >= L.x && F.r <= L.r && F.y >= L.y && F.b <= L.b,
+        casaVista: !!casa && !casa.fuera && dentro(casa, L) && !dentro(casa, F), destVisto: !!dest && !dest.fuera && dentro(dest, L) && !dentro(dest, F),
+        norte: ((document.elementFromPoint(L.r - 10, L.y + 10) || {}).getAttribute ? document.elementFromPoint(L.r - 10, L.y + 10).getAttribute('class') : null),
+        escala: q('.amapa__escala').textContent, sticky: getComputedStyle(q('.alr__mapa')).position,
+      };
+    });
+    const a0 = await leerMapa();
+    comprobar(a0.listo && a0.botones === RUTAS.orden.length && a0.id === 'playa' && a0.aPie && a0.tit === 'Playa de Navia' && /17 min/.test(a0.ficha) && /travelmode=walking/.test(a0.ir) && a0.ruta > 50 && a0.niveles.join() === 'cerca' && a0.mar !== 'none' && a0.mar !== a0.tierra,
+      `Alrededor, mapa: se monta con los ${a0.botones} sitios como botones y abre en la playa, a pie (vista de ${Math.round(a0.ancho)} m, escala «${a0.escala}»)`, { ...a0, ficha: undefined, lienzo: undefined, lista: undefined });
+    comprobar(a0.lienzo.x >= a0.lista.r && a0.lienzo.h >= 420 && a0.sticky === 'sticky' && a0.fichaDentro && a0.casaVista && a0.destVisto,
+      'Alrededor, mapa: a la derecha de la lista y pegado al bajar; la ficha va dentro y no tapa ni la casa ni el destino', { lienzo: a0.lienzo, lista: a0.lista, fichaDentro: a0.fichaDentro, casaVista: a0.casaVista, destVisto: a0.destVisto });
+    await page.click('li[data-ruta="oscos"] .alr__btn'); await cuadro();
+    const a1 = await leerMapa();
+    const dO = RUTAS.destinos.oscos;
+    comprobar(a1.id === 'oscos' && !a1.aPie && a1.tit === 'Santa Eulalia de Oscos' && a1.ficha.includes(tiempoTxt(dO.coche.minutos)) && /en coche/.test(a1.ficha) && /Por la N-634/.test(a1.ficha) && a1.ir.includes(dO.lat + ',' + dO.lon) && /travelmode=driving/.test(a1.ir) && a1.ancho > a0.ancho * 10 && a1.niveles.length === 1 && a1.niveles[0] !== 'cerca' && a1.casaVista && a1.destVisto && a1.fichaDentro && a1.norte === 'm-agua',
+      `Alrededor, mapa: al elegir los Oscos la vista se abre a ${Math.round(a1.ancho / 1000)} km (costa «${a1.niveles}»), con la ruta en coche, sus carreteras y el enlace a Google Maps`, { ...a1, lienzo: undefined, lista: undefined });
+    // una marca del mapa que esté a la vista y libre (las marcas miden 0×0: se pulsa en su punto, como haría el ratón)
+    const libre = await page.evaluate(() => {
+      const l = document.getElementById('alr-lienzo').getBoundingClientRect();
+      for (const m of document.querySelectorAll('.amapa__marca--sitio:not(.fuera):not(.es-elegida)')) {
+        const t = new DOMMatrix(getComputedStyle(m).transform), x = l.left + t.m41, y = l.top + t.m42, e = document.elementFromPoint(x, y);
+        if (e && e.closest('.amapa__marca--sitio') === m) return { id: m.dataset.ruta, x, y };
+      }
+      return null;
+    });
+    if (libre) { await page.mouse.click(libre.x, libre.y); await cuadro(); }
+    const a2 = await leerMapa();
+    await page.focus('li[data-ruta="luarca"] .alr__btn'); await page.keyboard.press('Enter'); await cuadro();
+    const a3 = await leerMapa();
+    await page.click('li[data-ruta="ovd"] .alr__btn'); await cuadro();
+    const a4 = await leerMapa();
+    comprobar(a4.id === 'ovd' && a4.norte === 'm-agua' && a1.norte === 'm-agua' && a4.casaVista && a4.destVisto, `Alrededor, mapa: en las vistas largas (aeropuerto, ${Math.round(a4.ancho / 1000)} km; Oscos) el norte del mapa es mar, no una franja de tierra`, { ovd: a4.norte, oscos: a1.norte, ancho: a4.ancho });
+    comprobar(!!libre && a2.id === libre.id && a2.tit === RUTAS.destinos[libre.id].nombre && a3.id === 'luarca' && a3.destVisto, `Alrededor, mapa: también eligen las marcas del mapa (${libre ? RUTAS.destinos[libre.id].nombre : 'ninguna libre'}) y el teclado (Luarca, con Intro)`, { libre, a2: a2.id, a3: a3.id });
+    const sinMapa = await nueva({}, { script: sinCookies, abortar: /alrededor-mapa\.json/ });
+    await sinMapa.page.goto(PAG);
+    await irA(sinMapa.page, '#alrededor', 0.1);
+    await sinMapa.page.waitForSelector('.alr.sin-modulo', { timeout: 8000 }).catch(() => {});
+    const sm = await sinMapa.page.evaluate(() => ({ cls: document.querySelector('.alr').className, botones: document.querySelectorAll('.alr__btn').length, lis: document.querySelectorAll('.alr li[data-ruta]').length, mapa: getComputedStyle(document.querySelector('.alr__mapa')).display, cols: getComputedStyle(document.querySelector('.rumbos')).gridTemplateColumns.split(' ').length }));
+    comprobar(/sin-modulo/.test(sm.cls) && !/con-mapa/.test(sm.cls) && sm.botones === 0 && sm.lis === RUTAS.orden.length && sm.mapa === 'none' && sm.cols === 3, 'Alrededor, mapa: si sus datos no llegan, vuelve la lista sola a tres columnas (sin hueco vacío)', sm);
+    await sinMapa.ctx.close();
+  }
   // foco del teclado
   await page.evaluate(() => scrollTo(0, 0));
   const focos = [];
@@ -500,6 +564,19 @@ try {
     des.push(await page.evaluate((s) => [s, document.documentElement.scrollWidth, innerWidth], s));
   }
   comprobar(des.every(([, a, b]) => a <= b), 'ninguna sección desborda en horizontal a 390 px', des.filter(([, a, b]) => a > b));
+  if (RUTAS && existe('data/alrededor-mapa.json')) {
+    await irA(page, '#alrededor', 0.1); await cuadro();
+    await page.waitForSelector('#alr-lienzo[data-listo]', { timeout: 8000 }).catch(() => {});
+    await page.locator('li[data-ruta="luarca"] .alr__btn').tap(); await cuadro();
+    const am = await page.evaluate(() => {
+      const r = (s) => document.querySelector(s).getBoundingClientRect(), tira = document.querySelector('.alr__lista');
+      const bs = [...document.querySelectorAll('.alr__btn')].map((b) => b.getBoundingClientRect());
+      return { tit: document.querySelector('.ficha__tit').textContent, tiraDesliza: tira.scrollWidth > tira.clientWidth + 40, enFila: new Set(bs.map((b) => Math.round(b.top))).size === 1, alto: Math.min(...bs.map((b) => b.height)), n: bs.length,
+        tira: r('.alr__lista').bottom, lienzo: r('#alr-lienzo'), ficha: r('.amapa__ficha'), pos: getComputedStyle(document.querySelector('.amapa__ficha')).position, ancho: innerWidth, doc: document.documentElement.scrollWidth };
+    });
+    comprobar(am.tit === 'Luarca' && am.tiraDesliza && am.enFila && am.alto >= 44 && am.tira <= am.lienzo.top + 1 && am.lienzo.width <= am.ancho && am.lienzo.height >= 280 && am.ficha.top >= am.lienzo.bottom && am.pos !== 'absolute' && am.doc <= am.ancho,
+      `Alrededor en móvil: los ${am.n} sitios en una tira que se desliza (botones de ${Math.round(am.alto)} px), el mapa debajo y la ficha bajo el mapa, sin desbordar`, am);
+  }
   await page.evaluate(() => scrollTo(0, 0));
   await page.tap('#menu-btn');
   const m1 = await page.evaluate(() => ({ exp: document.getElementById('menu-btn').getAttribute('aria-expanded'), vis: getComputedStyle(document.getElementById('menu-movil')).visibility, alto: document.getElementById('menu-movil').getBoundingClientRect().height }));

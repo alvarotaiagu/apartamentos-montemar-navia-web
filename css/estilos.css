@@ -248,6 +248,110 @@ html[data-tramo="agua"] { --fondo-pagina: var(--agua-claro); }
 @media (max-width: 899px) { .rumbos { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .cerca { grid-template-columns: 1fr; } }
 
+/* ---------- el mapa (js/alrededor.js): la lista es el mando, el mapa dibuja la ruta desde la casa ----------
+   Con JS, la maqueta de dos columnas (lista + mapa) se reserva desde el principio: montar el mapa no mueve la página.
+   Sin JS, o si el módulo falla (main.js pone .sin-modulo), queda la lista de arriba a todo el ancho. */
+.alr__mapa { display: none; }
+.alr__btn { display: grid; margin: 0; border: 0; border-radius: 10px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background-color .25s var(--ease), box-shadow .25s var(--ease); }
+.alr__btn:hover { background: color-mix(in oklab, var(--superficie) 60%, transparent); }
+.alr__btn[aria-pressed="true"] { background: var(--superficie); box-shadow: 0 0 0 1px var(--linea), 0 6px 18px color-mix(in oklab, var(--tinta) 8%, transparent); }
+.con-mapa .cerca__item { display: block; }
+.con-mapa .rumbo__lista li { display: block; padding: 0; }
+.cerca__item .alr__btn { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "ico nombre" "min min" "km km"; column-gap: .7rem; align-items: center; width: calc(100% + 1.6rem); margin: -.7rem -.8rem; padding: .7rem .8rem; }
+.rumbo__lista .alr__btn { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "n min" "n km"; column-gap: 1rem; width: calc(100% + 1.6rem); margin-inline: -.8rem; padding: .85rem .8rem; }
+
+.js .alr:not(.sin-modulo) .alr__mapa { display: block; position: relative; --m-tierra: color-mix(in oklab, var(--monte) 55%, #fff); --m-mar: color-mix(in oklab, var(--ola) 30%, var(--agua-claro)); --m-tinta-mar: color-mix(in oklab, var(--agua-texto) 62%, var(--tinta)); }
+.amapa__lienzo { position: relative; overflow: hidden; border-radius: var(--radio); background: var(--m-tierra); box-shadow: 0 0 0 1px var(--linea); }
+.amapa__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; --px: 10; }
+.amapa__svg path { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.amapa__svg .m-agua, .amapa__svg .m-embalse { fill: var(--m-mar); }
+.amapa__svg .m-isla { fill: var(--m-tierra); }
+.amapa__svg .m-playa { fill: color-mix(in oklab, var(--loma) 16%, #F7EDD3); }
+.m-costa { stroke: color-mix(in oklab, var(--ola) 62%, var(--m-tierra)); stroke-width: calc(var(--px) * 1); }
+.m-rio { stroke: color-mix(in oklab, var(--ola) 55%, var(--m-tierra)); stroke-width: calc(var(--px) * 1.6); }
+.m-calle { stroke: color-mix(in oklab, var(--tinta) 11%, var(--m-tierra)); stroke-width: calc(var(--px) * 1); }
+.m-calle--a { stroke: color-mix(in oklab, var(--tinta) 20%, var(--m-tierra)); stroke-width: calc(var(--px) * 1.9); }
+.m-ruta { stroke: color-mix(in oklab, var(--tinta) 26%, var(--m-tierra)); stroke-width: calc(var(--px) * 1.4); transition: stroke .25s var(--ease); }
+.m-ruta.es-vista { stroke: color-mix(in oklab, var(--loma) 70%, var(--m-tierra)); stroke-width: calc(var(--px) * 2.4); }
+.m-ruta.es-elegida { stroke: transparent; }
+.m-sel, .m-sel-casco { stroke-dasharray: 1 1; }
+.m-sel { stroke: var(--loma); stroke-width: calc(var(--px) * 3.6); }
+.es-a-pie .m-sel { stroke: var(--hoja); }
+.m-sel-casco { stroke: #fff; stroke-width: calc(var(--px) * 7.5); opacity: .92; }
+.m-sel-otra { stroke: var(--loma); stroke-width: calc(var(--px) * 2.2); stroke-dasharray: calc(var(--px) * 1) calc(var(--px) * 5.5); opacity: 0; transition: opacity .6s var(--ease); }
+.m-sel-otra.se-ve { opacity: .8; }
+
+.amapa__marcas { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.amapa__marca { position: absolute; left: 0; top: 0; width: 0; height: 0; transition: opacity .3s var(--ease); }
+.amapa__marca.fuera, .amapa__marca.oculta { opacity: 0; visibility: hidden; }
+.amapa__marca > span { position: absolute; left: 13px; top: 0; transform: translateY(-50%); white-space: nowrap; font: 500 .8rem/1.2 var(--letra-texto); color: var(--tinta); }
+.amapa__marca.a-la-izq > span { left: auto; right: 13px; }
+.amapa__marca::before { content: ""; position: absolute; border-radius: 50%; }
+.amapa__marca--sitio { pointer-events: auto; cursor: pointer; }
+.amapa__marca--sitio::after { content: ""; position: absolute; left: -20px; top: -20px; width: 40px; height: 40px; border-radius: 50%; }
+.amapa__marca--sitio::before { left: -5px; top: -5px; width: 10px; height: 10px; background: #fff; border: 2px solid var(--oscuro); transition: transform .25s var(--ease); }
+.amapa__marca--sitio > span { display: none; padding: .32em .7em; border-radius: 999px; background: #fff; color: var(--oscuro); font-weight: 600; box-shadow: 0 2px 10px color-mix(in oklab, var(--tinta) 18%, transparent); }
+.amapa__marca--sitio:hover { z-index: 2; }
+.amapa__marca--sitio:hover::before { transform: scale(1.35); }
+.amapa__marca--sitio:hover > span, .amapa__marca--sitio.es-elegida > span { display: block; }
+.amapa__marca--sitio.es-elegida { z-index: 2; }
+.amapa__marca--sitio.es-elegida::before { left: -7px; top: -7px; width: 14px; height: 14px; background: var(--loma); border-color: #fff; box-shadow: 0 0 0 1px var(--loma); }
+.es-a-pie ~ .amapa__marcas .amapa__marca--sitio.es-elegida::before { background: var(--hoja); box-shadow: 0 0 0 1px var(--hoja); }
+.amapa__marca--casa { z-index: 3; }
+.amapa__marca--casa::before { left: -8px; top: -8px; width: 16px; height: 16px; background: var(--oscuro); border: 2.5px solid #fff; box-shadow: 0 0 0 1px var(--oscuro); }
+.amapa__marca--casa > span { left: 15px; padding: .3em .75em .34em; border-radius: 999px; background: var(--oscuro); color: var(--claro); font: 600 .9rem/1.2 var(--letra-titular); }
+.amapa__marca--casa.a-la-izq > span { right: 15px; }
+.amapa__marca--ciudad::before { left: -2.5px; top: -2.5px; width: 5px; height: 5px; background: color-mix(in oklab, var(--tinta) 60%, var(--m-tierra)); }
+.amapa__marca--ciudad > span { left: 9px; color: color-mix(in oklab, var(--tinta) 78%, var(--m-tierra)); }
+.amapa__marca--ciudad.a-la-izq > span { right: 9px; }
+.amapa__marca--agua::before { display: none; }
+.amapa__marca--agua > span, .amapa__marca--agua.a-la-izq > span { left: 0; right: auto; transform: translate(-50%, -50%); color: var(--m-tinta-mar); font: italic 500 .9rem/1 var(--letra-titular); letter-spacing: .03em; }
+.amapa__escala { position: absolute; right: 1rem; bottom: .8rem; margin: 0; display: flex; align-items: center; gap: .5rem; font-size: .74rem; line-height: 1; color: var(--tinta); pointer-events: none; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 6px #fff; }
+.amapa__escala i { display: block; height: 6px; border: 1.5px solid var(--tinta); border-top: 0; }
+
+.amapa__ficha { padding: 1.1rem 1.25rem 1.2rem; border-radius: var(--radio); background: var(--superficie); color: var(--tinta); box-shadow: 0 10px 34px color-mix(in oklab, var(--tinta) 16%, transparent); }
+.amapa__ficha:empty { visibility: hidden; }
+.amapa__ficha p, .amapa__ficha h3 { margin: 0; }
+.ficha__grupo { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--agua-texto); }
+.amapa__ficha .ficha__tit { margin: .2rem 0 .55rem; font: 600 clamp(1.3rem, 1.15rem + .5vw, 1.6rem)/1.15 var(--letra-titular); }
+.ficha__min { font-size: 2.3rem; font-weight: 500; line-height: 1; color: var(--agua-texto); }
+.amapa__ficha .ficha__km { margin-top: .3rem; font-size: .92rem; color: var(--texto-suave); }
+.amapa__ficha .ficha__por { margin-top: .6rem; font-size: .92rem; line-height: 1.4; color: var(--texto-suave); }
+.ficha__ir { display: inline-block; margin-top: .8rem; font-weight: 600; color: var(--oscuro); text-decoration: underline; text-decoration-color: var(--loma); text-decoration-thickness: 2px; text-underline-offset: .22em; }
+.ficha__ir:hover { text-decoration-color: var(--oscuro); }
+.amapa__fuente { margin: .6rem 0 0; font-size: .78rem; color: var(--texto-suave); }
+
+@media (min-width: 1000px) {
+  .js .alr:not(.sin-modulo) { --alto-mapa: min(calc(100svh - var(--cabecera) - 4.5rem), 760px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+  .js .alr:not(.sin-modulo) .alr__lista { grid-column: 1; grid-row: 1; }
+  .js .alr:not(.sin-modulo) .alr__mapa { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--cabecera) + 1.25rem); min-height: calc(var(--alto-mapa) + 1.8rem); }
+  .js .alr:not(.sin-modulo) .cerca { gap: 1rem 2rem; padding-bottom: 1.7rem; margin-bottom: 1.9rem; }
+  .js .alr:not(.sin-modulo) .cerca__min { font-size: clamp(3rem, 1.6rem + 2.6vw, 4.4rem); }
+  .js .alr:not(.sin-modulo) .rumbos { grid-template-columns: 1fr; gap: 1.9rem; }
+  .amapa__lienzo { height: var(--alto-mapa); }
+  .amapa__ficha { position: absolute; left: 1rem; top: 1rem; z-index: 4; width: min(19.5rem, calc(100% - 2rem)); }
+}
+@media (max-width: 999px) {
+  /* la lista se vuelve una tira de sitios encima del mapa; debajo, la ficha del elegido */
+  .js .alr:not(.sin-modulo) { display: flex; flex-direction: column; gap: .9rem; }
+  .js .alr:not(.sin-modulo) .alr__lista { display: flex; gap: .5rem; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: var(--gutter); margin-inline: calc(-1 * var(--gutter)); padding: .25rem var(--gutter) .6rem; scrollbar-width: thin; }
+  .js .alr:not(.sin-modulo) :is(.cerca, .rumbos, .rumbo, .rumbo__lista) { display: contents; }
+  .js .alr:not(.sin-modulo) :is(.rumbo__tit, .cerca__km, .rumbo__km, .cerca__item .ico) { display: none; }
+  .js .alr:not(.sin-modulo) .alr__lista li { flex: none; scroll-snap-align: start; display: flex; align-items: center; gap: .6rem; min-height: 46px; padding: .5rem 1rem; border: 1px solid var(--linea); border-radius: 999px; white-space: nowrap; }
+  .js .alr.con-mapa .alr__lista li { padding: 0; }
+  .js .alr:not(.sin-modulo) .alr__lista li:has(> [aria-pressed="true"]) { border-color: var(--oscuro); }
+  .js .alr:not(.sin-modulo) .alr__btn { display: flex; align-items: center; gap: .6rem; width: auto; min-height: 44px; margin: 0; padding: .5rem 1rem; border-radius: 999px; box-shadow: none; }
+  .js .alr:not(.sin-modulo) :is(.cerca__nombre, .rumbo__lista b) { font-size: 1.05rem; }
+  .js .alr:not(.sin-modulo) :is(.cerca__min, .rumbo__min) { margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.2; color: var(--agua-texto); }
+  .js .alr:not(.sin-modulo) .cerca__min small { font-size: 1em; font-weight: 500; }
+  .js .alr:not(.sin-modulo) .alr__mapa { display: flex; flex-direction: column; gap: .8rem; }
+  .js .alr:not(.sin-modulo) .alr__mapa:empty { aspect-ratio: 4 / 4.2; max-height: 64svh; }
+  .amapa__lienzo { aspect-ratio: 4 / 4.2; max-height: 64svh; width: 100%; }
+  .amapa__ficha { min-height: 12.2rem; box-shadow: 0 0 0 1px var(--linea); }
+  .amapa__fuente { margin: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .alr__btn, .m-ruta, .m-sel-otra, .amapa__marca, .amapa__marca--sitio::before { transition: none; } }
+
 /* =====================================================================
    7. RESEÑAS: la nota en grande y cinco copas como las del logo
    ===================================================================== */
